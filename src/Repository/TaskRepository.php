@@ -76,4 +76,27 @@ class TaskRepository extends ServiceEntityRepository
 //             ->getQuery()
 //             ->getResult();
 //     }
+
+
+
+
+
+
+
+/**
+     * Finds tasks by technician ID.
+     *
+     * @param int $technicianId The technician ID to filter by.
+     *
+     * @return Task[] The tasks found.
+     */
+    public function findByTechnicianId($technId)
+    {
+        return $this->createQueryBuilder('t')
+            ->join('t.techn', 'techn')
+            ->andWhere('techn.id = :technId')
+            ->setParameter('technId', $technId)
+            ->getQuery()
+            ->getResult();
+    }
 }

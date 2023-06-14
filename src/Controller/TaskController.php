@@ -6,7 +6,7 @@ use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+// use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 #[Route('/task')]
 class TaskController extends AbstractController
@@ -36,12 +37,44 @@ class TaskController extends AbstractController
     #[Route('/', name: 'app_task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
 
 
 
         return $this->render('task/index.html.twig', [
             'tasks' => $taskRepository->findAll(),
+           
+        ]); 
+    }
+
+
+    // #[Route('/technicianview', name: 'app_task_techn_view', methods: ['GET'])]
+    // public function view_by_technician(TaskRepository $taskRepository): Response
+    // {
+    //     // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    //     // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+
+
+
+    //     return $this->render('task/technicianview.html.twig', [
+    //         'tasks' => $taskRepository->findAll(),
+           
+    //     ]); 
+    // }
+
+    #[Route('/techn_task', name: 'app_task_techn_view', methods: ['GET'])]
+    public function view_by_technician(TaskRepository $taskRepository, Security $security): Response
+    {
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+      $techn=$security->getUser();
+
+        $tasks = $taskRepository->findByTechnicianId($techn->getId());
+
+        return $this->render('task/technicianview.html.twig', [
+            // 'tasks' => $taskRepository->findAll(),
+            'tasks'=>$tasks,
            
         ]); 
     }
@@ -97,6 +130,24 @@ class TaskController extends AbstractController
             'isExpired' => $isExpired,
         ]);
     }
+
+
+    #[Route('/{id}/', name: 'app_task_techn_show', methods: ['GET'])]
+    public function show_update_by_technician_by_task(Task $task): Response
+    {
+
+ // Check if the entity is expired
+ $endDate = $task->getEndAt();
+ $currentDate = new \DateTime();
+ $interval = $currentDate->diff($endDate);
+ $isExpired = $interval->invert === 1;
+        return $this->render('task/technicianshow.html.twig', [
+            'task' => $task,
+            'isExpired' => $isExpired,
+        ]);
+    }
+
+
 
     #[Route('/{id}/edit', name: 'app_task_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Task $task, TaskRepository $taskRepository): Response

@@ -59,6 +59,7 @@ class MessagesType extends AbstractType
                 'attr' => [
                     'autocomplete' => 'description',
                     'class' => 'form-control border-0',
+                    
                     'placeholder' => 'eg.The description'
                 ],
             ])
@@ -80,53 +81,58 @@ class MessagesType extends AbstractType
                 ]
             )
 
-            ->add('infrastructure', EntityType::class, [
+            // ->add('cameraImage', TextType::class, [
+            //     'mapped' => false,
+            //     'required' => false,
+            // ])
 
-                // looks for choices from this entity
-                'class' => Infrastructure::class,
-                // uses the User.username property as the visible option string
-                // 'choice_label' => 'name',
-//                 'multiple' => true,
-                 'expanded' => true,
-                'choice_label' => function ($infrastructure) {
-                    return $infrastructure->getName();
-                }
-                // used to render a select box, check boxes or radios
-                // 'multiple' => true,
-                // 'expanded' => true,
+//             ->add('infrastructure', EntityType::class, [
 
-            ])
+//                 // looks for choices from this entity
+//                 'class' => Infrastructure::class,
+//                 // uses the User.username property as the visible option string
+//                 // 'choice_label' => 'name',
+// //                 'multiple' => true,
+//                  'expanded' => true,
+//                 'choice_label' => function ($infrastructure) {
+//                     return $infrastructure->getName();
+//                 }
+//                 // used to render a select box, check boxes or radios
+//                 // 'multiple' => true,
+//                 // 'expanded' => true,
+
+//             ])
 
 
-            ->add('classroom', EntityType::class, [
+            // ->add('classroom', EntityType::class, [
 
-                // looks for choices from this entity
-                'class' => Classroom::class,
-                // uses the User.username property as the visible option string
-                // 'choice_label' => 'name',
-                'choice_label' => function ($classroom) {
-                    return $classroom->getName();
-                }
-                // used to render a select box, check boxes or radios
-                // 'multiple' => true,
-                // 'expanded' => true,
+            //     // looks for choices from this entity
+            //     'class' => Classroom::class,
+            //     // uses the User.username property as the visible option string
+            //     // 'choice_label' => 'name',
+            //     'choice_label' => function ($classroom) {
+            //         return $classroom->getName();
+            //     }
+            //     // used to render a select box, check boxes or radios
+            //     // 'multiple' => true,
+            //     // 'expanded' => true,
 
-            ])
+            // ])
 
-            ->add('building', EntityType::class, [
+            // ->add('building', EntityType::class, [
 
-                // looks for choices from this entity
-                'class' => Building::class,
-                // uses the User.username property as the visible option string
-                // 'choice_label' => 'name',
-                'choice_label' => function ($building) {
-                    return $building->getName();
-                }
-                // used to render a select box, check boxes or radios
-                // 'multiple' => true,
-                // 'expanded' => true,
+            //     // looks for choices from this entity
+            //     'class' => Building::class,
+            //     // uses the User.username property as the visible option string
+            //     // 'choice_label' => 'name',
+            //     'choice_label' => function ($building) {
+            //         return $building->getName();
+            //     }
+            //     // used to render a select box, check boxes or radios
+            //     // 'multiple' => true,
+            //     // 'expanded' => true,
 
-            ])
+            // ])
             ->add('time', DateType::class, [
 
                 'widget' => 'single_text',
@@ -140,9 +146,10 @@ class MessagesType extends AbstractType
 
                 // looks for choices from this entity
                 'class' => User::class,
-                // 'value' => '{{app.user.email}}',
+                // 'value' =>$this->security->getUser(),
                 // uses the User.username property as the visible option string
                 // 'choice_label' => 'name',
+                // value="email@flowbite.com"
                 'choice_label' => function ($user) {
                     
                     // return $user->getUser();
@@ -155,9 +162,11 @@ class MessagesType extends AbstractType
             ])
             ->add('longitude', TextType::class)
             ->add('latitude', TextType::class)
+
+         
             
 
-    //
+ 
         ;
     }
 

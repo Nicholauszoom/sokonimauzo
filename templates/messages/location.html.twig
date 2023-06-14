@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- Include Leaflet library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-N5k0EnyGgJ+UzD6WjJ7d7t6ioW9vA+U+g4MzBh0Hk9FTu5aLb1sQnB5O4A0tS9rX1x0UqX4v8sUj9eUddB4m3w==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-pMm6v9wH6vV5BfXtB5M5q1V9nO+mlpRl2jTn9a8zw8tS8lK+LqxgV1h5KlJvvt3H0+KwQV7RCeIg0/5/1jzOuQ==" crossorigin="anonymous"></script>
+
+
+
+<script>
+  (function() {
+    var map = L.map('map').setView([51.505, -0.09], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add markers
+    L.marker([51.5, -0.09]).addTo(map)
+        .bindPopup("<b>Hello world!</b><br>I am a popup.");
+
+    L.marker([51.6, -0.1]).addTo(map)
+        .bindPopup("<b>Another marker</b><br>With some text.");
+  })();
+</script>
+</head>
+<body>
+
+<div id="map" style="height: 500px;"></div>
+
+</body>
+</html>

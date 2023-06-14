@@ -5,47 +5,145 @@
      {{ form_row(form.title)}}
        {{ form_row(form.description)}}
        {{ form_row(form.imagePath)}}
-       {{ form_row(form.infrastructure)}}
-       {{ form_row(form.classroom)}}
-          {{ form_row(form.building)}}
+       {# {{ form_row(form.infrastructure)}} #}
+       {# {{ form_row(form.classroom)}} #}
+          {# {{ form_row(form.building)}} #}
+
+         {# <button type="button" id="capture-button">Take picture</button>
+           {{ form_row(form.cameraImage, {'label': 'Preview'}) }} #}
+ 
              {{ form_row(form.time)}}
                 {{ form_row(form.user)}}
 
-    <button type="button" id="get-location-btn">Get Location</button>
+    <button type="button" id="find-state">Get Location</button>
          {{ form_row(form.latitude)}}
         {{ form_row(form.longitude)}}
        
          {# {{ form_row(form.submit)}} #}
       
       
-    <button  class="btn-circle btn-lg btn-cyan float-end text-white">
+    {# <button  class="btn-circle btn-lg btn-cyan float-end text-white"> #}
+     <button type="submit" class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+                <svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path></svg>
+                Send
+            </button>
 
      
 
-
-        {{ button_label|default('') }}
+        {# {{ button_label|default('') }}
         <i class="mdi mdi-send fs-3"></i
-    </button>
+    </button> #}
 
     
    
 {{ form_end(form) }}
 
+<script>
+    const captureButton = document.getElementById('capture-button');
+    const cameraImage = document.getElementById('cameraImage');
 
- <script>
-    if (navigator.geolocation) {
-    document.getElementById('get-location-btn').addEventListener('click', function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log('Latitude:', position.coords.latitude);
-            console.log('Longitude:', position.coords.longitude);
-            document.getElementById('location_latitude').value = position.coords.latitude;
-            document.getElementById('location_longitude').value = position.coords.longitude;
-        });
+    captureButton.addEventListener('click', () => {
+        // Access the camera and capture an image
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then((stream) => {
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.play();
+
+                const canvas = document.createElement('canvas');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                cameraImage.value = canvas.toDataURL('image/png');
+
+                stream.getTracks().forEach(track => track.stop());
+            })
+            .catch((error) => {
+                console.error('Error accessing camera:', error);
+            });
     });
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+const findMyState = ()  => {
+
+    const status = document.querySelector('.status');
+
+    const success = (position) => {
+        console.log(position)
+        const latitude = position.coords.latitude;
+        const longitude =position.coords.longitude;
+       
+       const geoApiUrl= 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en'
+   
+      fetch (geoApiUrl)
+         .then(res=>res.json())
+         .then(data=>{
+
+            console.log
+         }
+         )
+    }
+
+    const error = () => {
+        status.textContent = "Uneble to access your location";
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+}
+
+document.querySelector('.find-state').addEventListener('click', findMyState);
+
+
+</script>
+
+
+
+
+
+<script>
+
+const cameraView = document.getElementById('camera-view');
+
+if (navigator.getUserMedia) {
+    navigator.getUserMedia(
+        // constraints
+        {
+            video: true,
+            audio: false
+        },
+
+        // successCallback
+        function(localMediaStream) {
+            cameraView.srcObject = localMediaStream;
+        },
+
+        // errorCallback
+        function(err) {
+            console.log("The following error occurred: " + err);
+        }
+    );
 } else {
-    alert('Geolocation is not supported by this browser.');
+    console.log("getUserMedia not supported");
 }
 </script>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -64,6 +162,36 @@
 } else {
     alert('Geolocation is not supported by this browser.');
 }
-</script> #}
+
+{# if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    
+    // Populate hidden form fields with latitude and longitude values
+    document.getElementById('latitude').value = latitude;
+    document.getElementById('longitude').value = longitude;
+  });
+} #}
+{# </script> #}
+
+
+
+
+{# 
+ <script>
+    if (navigator.geolocation) {
+    document.getElementById('get-location-btn').addEventListener('click', function() {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log('Latitude:', position.coords.latitude);
+            console.log('Longitude:', position.coords.longitude);
+            document.getElementById('latitude').value = position.coords.latitude;
+            document.getElementById('longitude').value = position.coords.longitude;
+        });
+    });
+} else {
+    alert('Geolocation is not supported by this browser.');
+}
+</script> #} 
 
 </div>

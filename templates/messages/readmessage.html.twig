@@ -1,0 +1,724 @@
+{# previous template view #}
+{# {% extends 'base2.html.twig' %}
+
+{% block title %}Messages{% endblock %} #}
+
+{# {% block body %}
+    <h1>Messages</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ message.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ message.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ message.description }}</td>
+            </tr>
+            <tr>
+                <th>ImagePath</th>
+                <td>{{ message.imagePath }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_messages_index') }}">back to list</a>
+
+    <a href="{{ path('app_messages_edit', {'id': message.id}) }}">edit</a>
+
+    {{ include('messages/_delete_form.html.twig') }}
+{% endblock %} #}
+
+{# prev end #}
+
+
+{# show or read messages target ttemplate #}
+
+{# {% extends 'base2.html.twig' %}
+
+{% block title %}Messages index{% endblock %}
+
+{% block body %}
+
+    <main class="flex-1 flex bg-gray-50 mx-auto w-full">
+        <section class="bg-gray-50 dark:bg-gray-50  w-full">
+            <div class="mx-auto w-4/5 my-8">
+                {# <h1 class="text-6xl pt-12 pb-8">
+                Recent Posts ({{ messages|length }})
+            </h1> #}
+{# <a
+                        href="{{ path('app_messages_new') }}"
+                        class="uppercase border border-gray-500 text-lg py-4 px-6 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
+                    Create New
+                </a>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Id
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Title
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Description
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Deliverd At
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+
+                    </tr>
+                    </thead>
+                    {% for message in messages %}
+                        <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ message.id }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ message.title }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ message.description }}
+                            </td>
+                            <td class="px-6 py-4">
+                                {{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}
+                            </td>
+                            <td class="px-6 py-4">
+                                <a
+                                        href="{{ path('app_messages_show', {'id': message.id}) }}"
+                                        class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+                                    show
+                                </a>
+                                <a
+                                        href="{{ path('app_messages_edit', {'id': message.id}) }}"
+                                        class="bg-red-500 font-bold py-2 px-4 rounded transition-all hover:bg-red-300">
+                                    edit
+                                </a>
+                            </td>
+
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+
+                        </tbody>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </section> #}
+{# </main>
+{% endblock %}  #}
+
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+	<head>
+		<meta charset="utf-8"/>
+		<meta
+		http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<!-- Tell the browser to be responsive to screen width -->
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Matrix lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Matrix admin lite design, Matrix admin lite dashboard bootstrap 5 dashboard template"/>
+		<meta
+		name="description" content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"/>
+
+
+		{# flowable template head --start #}
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://flowbite.com/application-ui/demo/app.css">
+		<link rel="apple-touch-icon" sizes="180x180" href="https://flowbite.com/application-ui/demo/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="https://flowbite.com/application-ui/demo/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="https://flowbite.com/application-ui/demo/favicon-16x16.png">
+		<link rel="icon" type="image/png" href="https://flowbite.com/application-ui/demo/favicon.ico">
+		<link rel="manifest" href="https://flowbite.com/application-ui/demo/site.webmanifest">
+		<link rel="mask-icon" href="https://flowbite.com/application-ui/demo/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="theme-color" content="#ffffff">
+		<!-- Twitter -->
+		{# <meta name="twitter:card" content="summary">
+						<meta name="twitter:site" content="@">
+						<meta name="twitter:creator" content="@">
+						<meta name="twitter:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
+						<meta name="twitter:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
+						<meta name="twitter:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg"> #}
+
+		<!-- Facebook -->
+		<meta property="og:url" content="https://flowbite.com/application-ui/demo/mailing/inbox/"> <meta property="og:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
+		<meta property="og:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
+		<meta property="og:type" content="article">
+		<meta property="og:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg">
+		<meta property="og:image:type" content="image/png">
+
+		<script src="https://cdn.tailwindcss.com"></script>
+
+
+		<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-9"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'UA-141734189-9');
+		</script>
+
+
+		<script>
+
+			if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+document.documentElement.classList.add('v2fLMH8w3xgUEQcl63H9');
+} else {
+document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
+}
+		</script>
+
+		{# end #}
+
+
+		<meta name="robots" content="noindex,nofollow"/>
+		<title></title>
+		<!-- Favicon icon -->
+		<link
+		rel="icon" type="image/png" sizes="16x16" href="../asset/images/"/>
+		<!-- Custom CSS -->
+		<link
+		href="../asset/libs/flot/css/float-chart.css" rel="stylesheet"/>
+		<!-- Custom CSS -->
+		<link href="../dist/css/style.min.css" rel="stylesheet"/>
+
+
+
+	<!-- Include Leaflet library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-N5k0EnyGgJ+UzD6WjJ7d7t6ioW9vA+U+g4MzBh0Hk9FTu5aLb1sQnB5O4A0tS9rX1x0UqX4v8sUj9eUddB4m3w==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-pMm6v9wH6vV5BfXtB5M5q1V9nO+mlpRl2jTn9a8zw8tS8lK+LqxgV1h5KlJvvt3H0+KwQV7RCeIg0/5/1jzOuQ==" crossorigin="anonymous"></script>
+
+
+<!-- Initialize the map -->
+
+	</head>
+
+	<body>
+
+	
+		<!-- ============================================================== -->
+		<!-- Preloader - style you can find in spinners.css -->
+		<!-- ============================================================== -->
+			<div class="preloader"> <div class="lds-ripple">
+				<div class="lds-pos"></div>
+				<div class="lds-pos"></div>
+			</div>
+		</div>
+		<!-- ============================================================== -->
+		<!-- Main wrapper - style you can find in pages.scss -->
+		<!-- ============================================================== -->
+			<div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full"> <!-- ============================================================== -->
+			<!-- Topbar header - style you can find in pages.scss -->
+			<!-- ============================================================== -->
+				<header class="topbar" data-navbarbg="skin5"> <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+					<div class="navbar-header" data-logobg="skin5">
+						<!-- ============================================================== -->
+						<!-- Logo -->
+						<!-- ============================================================== -->
+							<a
+							class="navbar-brand" href="index.html"> <!-- Logo icon -->
+							<b class="chat-img">
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+									<a class="
+																				                    nav-link
+																				                    dropdown-toggle
+																				                    text-muted
+																				                    waves-effect waves-dark
+																				                    pro-pic
+																				                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../asset/images/users/user-100.png" alt="user" class="rounded-circle" width="31"/>
+									{# {{app.user.email}} #}
+								</a>
+							</b>
+
+
+						</a>
+
+						<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+							<i class="ti-menu ti-close"></i>
+						</a>
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+						<div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5"> <!-- ============================================================== -->
+						<!-- toggle and nav items -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav float-start me-auto"> <li class="nav-item d-none d-lg-block">
+								<a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+									<i class="mdi mdi-menu font-24"></i>
+								</a>
+							</li>
+							<!-- ============================================================== -->
+							<!-- create new -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="d-none d-md-block">Create New
+										<i class="fa fa-angle-down"></i>
+									</span>
+									<span class="d-block d-md-none">
+										<i class="fa fa-plus"></i>
+									</span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="#">Action</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Another action</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- Search -->
+							<!-- ============================================================== -->
+								<li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+									<i class="mdi mdi-magnify fs-4"></i>
+								</a>
+								<form class="app-search position-absolute">
+									<input type="text" class="form-control" placeholder="Search &amp; enter"/>
+									<a class="srh-btn">
+										<i class="mdi mdi-window-close"></i>
+									</a>
+								</form>
+							</li>
+						</ul>
+						<!-- ============================================================== -->
+						<!-- Right side toggle and nav items -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav float-end"> <!-- ============================================================== -->
+							<!-- Comment -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="mdi mdi-bell font-24"></i>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="#">Action</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Another action</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- End Comment -->
+							<!-- ============================================================== -->
+							<!-- ============================================================== -->
+							<!-- Messages -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="font-24 mdi mdi-comment-processing"></i>
+								</a>
+								<ul class="
+																		                    dropdown-menu dropdown-menu-end
+																		                    mailbox
+																		                    animated
+																		                    bounceInDown
+																		                  " aria-labelledby="2">
+									<ul class="list-style-none">
+										<li>
+											<div
+												class="">
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																																                                btn btn-success btn-circle
+																																                                d-flex
+																																                                align-items-center
+																																                                justify-content-center
+																																                              ">
+															<i class="mdi mdi-calendar text-white fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Event today</h5>
+															<span class="mail-desc">Just a reminder that event</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																																                                btn btn-info btn-circle
+																																                                d-flex
+																																                                align-items-center
+																																                                justify-content-center
+																																                              ">
+															<i class="mdi mdi-settings fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Settings</h5>
+															<span class="mail-desc">You can customize this template</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																																                                btn btn-primary btn-circle
+																																                                d-flex
+																																                                align-items-center
+																																                                justify-content-center
+																																                              ">
+															<i class="mdi mdi-account fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Pavan kumar</h5>
+															<span class="mail-desc">Just see the my admin!</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																																                                btn btn-danger btn-circle
+																																                                d-flex
+																																                                align-items-center
+																																                                justify-content-center
+																																                              ">
+															<i class="mdi mdi-link fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Luanch Admin</h5>
+															<span class="mail-desc">Just see the my new admin!</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- End Messages -->
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+							<!-- User profile and search -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="
+																		                    nav-link
+																		                    dropdown-toggle
+																		                    text-muted
+																		                    waves-effect waves-dark
+																		                    pro-pic
+																		                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="../asset/images/users/1.jpg" alt="user" class="rounded-circle" width="31"/>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-account me-1 ms-1"></i>
+										My Profile</a>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-wallet me-1 ms-1"></i>
+										My Balance</a>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-email me-1 ms-1"></i>
+										Inbox</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-settings me-1 ms-1"></i>
+										Account
+																				                    Setting</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/logout">
+										<i class="fa fa-power-off me-1 ms-1"></i>
+										Logout</a>
+									<div class="dropdown-divider"></div>
+									<div class="ps-4 p-10">
+										<a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded text-white">View Profile</a>
+									</div>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+						<!-- User profile and search -->
+							<!-- ============================================================== -->
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<!-- ============================================================== -->
+			<!-- End Topbar header -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+				<aside
+				class="left-sidebar" data-sidebarbg="skin5"> <!-- Sidebar scroll-->
+				<div
+					class="scroll-sidebar">
+					<!-- Sidebar navigation-->
+					<nav class="sidebar-nav">
+						<ul id="sidebarnav" class="pt-4">
+							<li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/UserDashboard" aria-expanded="false">
+									<i class="mdi mdi-dialpad"></i>
+									<span class="hide-menu">Dashboard</span>
+								</a>
+							</li>
+							<li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/messages/read/" aria-expanded="false">
+									<i class="mdi mdi-comment-processing"></i>
+									<span class="hide-menu">Message</span>
+								</a>
+							
+								
+										             
+						</ul>
+					</nav>
+					<!-- End Sidebar navigation -->
+				</div>
+				<!-- End Sidebar scroll-->
+			</aside>
+			<!-- ============================================================== -->
+			<!-- End Left Sidebar - style you can find in sidebar.scss  -->
+			<!-- ============================================================== -->
+			<!-- ============================================================== -->
+			<!-- Page wrapper  -->
+			<!-- ============================================================== -->
+			
+				<div class="page-wrapper" > <!-- ============================================================== -->
+
+				<!-- Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+					<div class="page-breadcrumb"> <div class="row">
+						<div class="col-12 d-flex no-block align-items-center">
+							<h4 class="page-title">Tables</h4>
+							<div class="ms-auto text-end">
+								<nav aria-label="breadcrumb">
+									<ol class="breadcrumb">
+										<li class="breadcrumb-item">
+											<a href="#">Home</a>
+										</li>
+										<li class="breadcrumb-item active" aria-current="page">
+											Library
+										</li>
+									</ol>
+								</nav>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- ============================================================== -->
+				<!-- End Bread crumb and right sidebar toggle -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- Container fluid  -->
+				<!-- ============================================================== -->
+				{# flowable template read component start #}
+					<div class="TcRv2CxEufCAnWVUJnDf"> <div class="YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 hD0sTTDgbxakubcHVW2X">
+						 {% for message in messages %}
+                    <ul class="chat-list">
+                      
+
+                      <li class="chat-item">
+                        <div class="chat-img">
+                          <img src="../asset/images/users/1.jpg" alt="user" /> 
+                        </div>
+                        <div class="chat-content">
+                          <h6 class="font-medium">{{ app.user }}</h6>
+                          <div class="box bg-light-info">
+                           {{ message.description }}
+                            {# &amp; type setting industry. #}
+                          </div>
+                          
+                        </div>
+                         <div class="card" style="width:500px">
+					            	<img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{message.imagePath}}" alt="image description">
+
+                            </div>
+                        <div class="chat-time">{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</div>  
+
+                        {# <div class="card" style="width:500px">
+                        <img class="card-img" src={{ message.imagePath }} alt="Card image">
+                        <div class="card-img-overlay">
+                        <h4 class="card-title color-blue">James Anderson</h4>
+                        <p class="card-text"> {{ message.description }}</p>
+                        {# <a href="#" class="btn btn-primary">See Profile</a> #}
+                        {# <div class="chat-time">{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</div> #}
+
+                        {# </div> #} 
+
+                        </div>
+
+                      </li>
+                     
+                     
+                    </ul>
+                     {%  endfor  %}					
+					</div>
+
+				</div>
+
+				<div class="VuoyqWQkm5MTiE515qz8 ZjE1E_5ejL_PlLNIq3MM t6gkcSf0Bt4MLItXvDJ_ _wYiJGbRZyFZeCc8y7Sf _Ybd3WwuTVljUT4vEaM3 pVSXSlnJdgskzP7BxPBe qUWbS_LTZujDB4XCd11V _rbREs2SIYdK0SJ5aDno cuxyNKUbd5hnprwfwS2s _1jTZ8KXRZul60S6czNi _fGhMnSfYmaGrv7DvZ00">
+					<div class="Q_jg_EPdNf9eDMn1mLI2 rvdRhGyExrNYTA6euxsF om3BNuWld9UpFB3WzeiL lPgrNAFSq7M44sp_5uKw TcPymUI0qRI_HK56budh XpuPpk9eXhVCrleKmXDr">
+						<div class="_hpGev6RXFut0Jm_iRgf tI6ZVpHcCWxY_MKHSQWC rvdRhGyExrNYTA6euxsF xr7CqaTHxTvDOrwAH2SW tkZo48dB4RhnHSlDXzoe">
+							<div>
+								<a href="/messages/new/" class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+									<svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									Message
+								</a>
+							</div>
+							<div>
+
+						
+							</div>
+						</div>
+						<div class="YRrCJSr_j5nopfm4duUc XYChh_GyxXGwI9NMA1Ww R0X5VtiZIoV7IjvrxBJ_ dGKzfMAd6n2iS7Kmq6Ow">
+							<a href="#" class="_k0lTW0vvzboctTxDi2R Nm7xMnguzOx6J5Ao7yCU sQaK4IH7BIQSgBTGX8Pe PeR2JZ9BZHYIH8Ea3F36 Y3FxyuXtj2gecrGXvLEI SA5DoMHfwOFtY4h_qzuM ZnBoTVi7VOJdCLSSU62n _7KA5gD55t2lxf9Jkj20 XIIs8ZOri3wm8Wnj9N_y OPrb_iG5WDy_7F05BDOX dMTOiA3mf3FTjlHu6DqW">
+								<svg class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 100-2 1 1 0 000 2zm7-1a1 1 0 11-2 0 1 1 0 012 0zm-.464 5.535a1 1 0 10-1.415-1.414 3 3 0 01-4.242 0 1 1 0 00-1.415 1.414 5 5 0 007.072 0z" clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<a href="#" class="_k0lTW0vvzboctTxDi2R Nm7xMnguzOx6J5Ao7yCU sQaK4IH7BIQSgBTGX8Pe PeR2JZ9BZHYIH8Ea3F36 Y3FxyuXtj2gecrGXvLEI SA5DoMHfwOFtY4h_qzuM ZnBoTVi7VOJdCLSSU62n _7KA5gD55t2lxf9Jkj20 XIIs8ZOri3wm8Wnj9N_y OPrb_iG5WDy_7F05BDOX dMTOiA3mf3FTjlHu6DqW">
+								<svg class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"></path>
+								</svg>
+							</a>
+							<a href="#" class="_k0lTW0vvzboctTxDi2R Nm7xMnguzOx6J5Ao7yCU sQaK4IH7BIQSgBTGX8Pe PeR2JZ9BZHYIH8Ea3F36 Y3FxyuXtj2gecrGXvLEI SA5DoMHfwOFtY4h_qzuM ZnBoTVi7VOJdCLSSU62n _7KA5gD55t2lxf9Jkj20 XIIs8ZOri3wm8Wnj9N_y OPrb_iG5WDy_7F05BDOX dMTOiA3mf3FTjlHu6DqW">
+								<svg class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+								</svg>
+							</a>
+							<a href="#" class="_k0lTW0vvzboctTxDi2R Nm7xMnguzOx6J5Ao7yCU sQaK4IH7BIQSgBTGX8Pe PeR2JZ9BZHYIH8Ea3F36 Y3FxyuXtj2gecrGXvLEI SA5DoMHfwOFtY4h_qzuM ZnBoTVi7VOJdCLSSU62n _7KA5gD55t2lxf9Jkj20 XIIs8ZOri3wm8Wnj9N_y OPrb_iG5WDy_7F05BDOX dMTOiA3mf3FTjlHu6DqW">
+								<svg class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+									<path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"></path>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+
+				{# end #}
+
+
+				{# previous table component #}
+				{# <tbody>
+												            <tr>
+												                <th>Id</th>
+												                <td>{{ message.id }}</td>
+												            </tr>
+												            <tr>
+												                <th>Title</th>
+												                <td>{{ message.title }}</td>
+												            </tr>
+												            <tr>
+												                <th>Description</th>
+												                <td>{{ message.description }}</td>
+												            </tr>
+												            <tr>
+												                <th>ImagePath</th>
+												                <td>{{ message.imagePath }}</td>
+												            </tr>
+												            <tr>
+												                <th>Time</th>
+												                <td>{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</td>
+												            </tr>
+												        </tbody> #}
+				{# end #}
+
+
+				<!-- ============================================================== -->
+				<!-- End Container fluid  -->
+				<!-- ============================================================== -->
+				<!-- ============================================================== -->
+				<!-- footer -->
+				<!-- ============================================================== -->
+					<footer class="footer text-center"> All Rights Reserved by Matrix-admin. Designed and Developed by
+					<a href="https://www.wrappixel.com">WrapPixel</a>.
+				</footer>
+				<!-- ============================================================== -->
+			<!-- End footer -->
+				<!-- ============================================================== -->
+			</div>
+			<!-- ============================================================== -->
+		<!-- End Page wrapper  -->
+			<!-- ============================================================== -->
+		</div>
+
+<!-- Initialize the map -->
+
+
+
+
+
+
+
+		<!-- ============================================================== -->
+		<!-- End Wrapper -->
+		<!-- ============================================================== -->
+		<!-- ============================================================== -->
+		<!-- All Jquery -->
+		<!-- ============================================================== --><script src="../asset/libs/jquery/dist/jquery.min.js"> </script>
+		<!-- Bootstrap tether Core JavaScript -->
+		<script src="../asset/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<!-- slimscrollbar scrollbar JavaScript -->
+		<script src="../asset/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+		<script src="../asset/extra-libs/sparkline/sparkline.js"></script>
+		<!--Wave Effects -->
+		<script src="../dist/js/waves.js"></script>
+		<!--Menu sidebar -->
+		<script src="../dist/js/sidebarmenu.js"></script>
+		<!--Custom JavaScript -->
+		<script src="../dist/js/custom.min.js"></script>
+		<!-- this page js -->
+		<script src="../asset/extra-libs/multicheck/datatable-checkbox-init.js"></script>
+		<script src="../asset/extra-libs/multicheck/jquery.multicheck.js"></script>
+		<script src="../asset/extra-libs/DataTables/datatables.min.js"></script>
+		<script>
+			/****************************************
+       *       Basic Table                   *
+       ****************************************/
+$("#zero_config").DataTable();
+		</script>
+
+		{# flowable template scripts #}
+		<script src="https://flowbite.com/application-ui/demo/app.bundle.js"></script>
+
+		{# end #}
+	</body>
+</html>
+
+
+{# end #}
+
+
+{# flowable template view #}

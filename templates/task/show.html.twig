@@ -588,13 +588,13 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 
 						{# <img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{message.imagePath}}" alt="image description"> #}
 						<p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y">
-							{{ task.startAt ? task.startAt|date('Y-m-d H:i:s') : '' }},<br>
-							{{ task.endAt ? task.endAt|date('Y-m-d H:i:s') : '' }},
+						Start Date:	{{ task.startAt ? task.startAt|date('Y-m-d H:i:s') : '' }},<br>
+							{# {{ task.endAt ? task.endAt|date('Y-m-d H:i:s') : '' }}, #}
 							
 
 						</p>
                   <p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y">           {% if isExpired %}
-        <div class="alert alert-danger">Expired</div>
+        <div class="alert alert-danger">Expired since {{ task.endAt ? task.endAt|date('Y-m-d H:i:s') : '' }}</div>
     {% else %}
         <div class="alert alert-success">Expires on {{ task.endAt ? task.endAt|date('Y-m-d H:i:s') : '' }}</div>
     {% endif %}</p>
@@ -616,7 +616,18 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 								</a>
 							</div>
 							<div>
-
+							<div class="_hpGev6RXFut0Jm_iRgf tI6ZVpHcCWxY_MKHSQWC rvdRhGyExrNYTA6euxsF xr7CqaTHxTvDOrwAH2SW tkZo48dB4RhnHSlDXzoe">
+							<div>
+								<a href="{{ path('app_task_edit', {'id': task.id}) }}" class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+									<svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									Edit
+								</a>
+							</div>
+							<div>
+							
+                            {{ include('task/_delete_form.html.twig') }}
 							 {# <a href="{{ path('app_messages_edit', {'id': message.id}) }}"> #}
 
                                  {# <button type="button" data-modal-toggle="user-modal" class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">

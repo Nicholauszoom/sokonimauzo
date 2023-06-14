@@ -25,17 +25,20 @@ class Messages
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagePath = null;
 
-    #[ORM\ManyToOne(inversedBy: 'messages')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Infrastructure $infrastructure = null;
+    //  #[ORM\Column(length: 255, nullable: true)]
+    // private ?string $cameraImage = null;
 
-    #[ORM\ManyToOne(inversedBy: 'messages')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Classroom $classroom = null;
+    // #[ORM\ManyToOne(inversedBy: 'messages')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Infrastructure $infrastructure = null;
 
-    #[ORM\ManyToOne(inversedBy: 'messages')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Building $building = null;
+    // #[ORM\ManyToOne(inversedBy: 'messages')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Classroom $classroom = null;
+
+    // #[ORM\ManyToOne(inversedBy: 'messages')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Building $building = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $time = null;
@@ -95,41 +98,41 @@ class Messages
         return $this;
     }
 
-    public function getInfrastructure(): ?Infrastructure
-    {
-        return $this->infrastructure;
-    }
+    // public function getInfrastructure(): ?Infrastructure
+    // {
+    //     return $this->infrastructure;
+    // }
 
-    public function setInfrastructure(?Infrastructure $infrastructure): self
-    {
-        $this->infrastructure = $infrastructure;
+    // public function setInfrastructure(?Infrastructure $infrastructure): self
+    // {
+    //     $this->infrastructure = $infrastructure;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getClassroom(): ?Classroom
-    {
-        return $this->classroom;
-    }
+    // public function getClassroom(): ?Classroom
+    // {
+    //     return $this->classroom;
+    // }
 
-    public function setClassroom(?Classroom $classroom): self
-    {
-        $this->classroom = $classroom;
+    // public function setClassroom(?Classroom $classroom): self
+    // {
+    //     $this->classroom = $classroom;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getBuilding(): ?Building
-    {
-        return $this->building;
-    }
+    // public function getBuilding(): ?Building
+    // {
+    //     return $this->building;
+    // }
 
-    public function setBuilding(?Building $building): self
-    {
-        $this->building = $building;
+    // public function setBuilding(?Building $building): self
+    // {
+    //     $this->building = $building;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getTime(): ?\DateTimeInterface
     {

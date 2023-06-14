@@ -206,9 +206,20 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 		<!-- Custom CSS -->
 		<link href="../dist/css/style.min.css" rel="stylesheet"/>
 
+
+
+	<!-- Include Leaflet library -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" integrity="sha512-N5k0EnyGgJ+UzD6WjJ7d7t6ioW9vA+U+g4MzBh0Hk9FTu5aLb1sQnB5O4A0tS9rX1x0UqX4v8sUj9eUddB4m3w==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js" integrity="sha512-pMm6v9wH6vV5BfXtB5M5q1V9nO+mlpRl2jTn9a8zw8tS8lK+LqxgV1h5KlJvvt3H0+KwQV7RCeIg0/5/1jzOuQ==" crossorigin="anonymous"></script>
+
+
+<!-- Initialize the map -->
+
 	</head>
 
 	<body>
+
+	
 		<!-- ============================================================== -->
 		<!-- Preloader - style you can find in spinners.css -->
 		<!-- ============================================================== -->
@@ -616,7 +627,9 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 			<!-- ============================================================== -->
 			<!-- Page wrapper  -->
 			<!-- ============================================================== -->
-				<div class="page-wrapper"> <!-- ============================================================== -->
+			
+				<div class="page-wrapper" > <!-- ============================================================== -->
+
 				<!-- Bread crumb and right sidebar toggle -->
 				<!-- ============================================================== -->
 					<div class="page-breadcrumb"> <div class="row">
@@ -666,23 +679,25 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 						<img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{message.imagePath}}" alt="image description">
 						<p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y">
 							{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }},<br>
-							{{ message.building }},
-							{{ message.classroom }},</br>
+							{# {{ message.building }}, #}
+							{# {{ message.classroom }},</br> #}
 						"Lat:"{{ message.latitude }},
 						"Long:"	{{ message.longitude}}
 
 						</p>
-                     <p style="width:450px; height:450px;">
-						{# <iframe src="https://www.google.com/maps/q={{message.latitude}},{{message.longitude}}&hl=es;z=14&output=embed"></iframe> #}
+
+								<iframe src="https://maps.googleapis.com/maps/api/geocode/json?latlng={{message.latitude}},{{message.longitude}}&key=AIzaSyAnkAoTbOzrbFufbCG6NFSptGX2fsvQqIA"></iframe>
+                     {# <p style="width:600px; height:600px; ">  #}
+						{# <iframe src="https://www.google.com/maps/@${{ message.latitude }},${{ message.longitude}},16z?entry=ttu"></iframe> #}
 					
-					<iframe src="https://maps.googleapis.com/maps/api/geocode/json?latlng={{message.latitude}},{{message.longitude}}&key=AIzaSyBNuisLD7hjLqagDOns0pSUglDflou6s-8"></iframe>
+					{# <iframe src="https://www.google.com/maps/@${{ message.latitude }},${{ message.longitude}},16z?entry=ttu" width="auto" height="250" style="border:0; <!--filter:invert(100%)--><!--;-->" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  #}
 					
+                         
+			                {# <iframe src="https://www.google.com/maps/place/Hanizz+Hotel/@-6.7826374,39.1052598,15.29z/data=!4m9!3m8!1s0x185c4549c17b5bb9:0x44b5ee08293a6fb7!5m2!4m1!1i2!8m2!3d-6.7789486!4d39.1082493!16s%2Fg%2F11gmfygjr6?entry=ttu" width="auto" height="250" style="border:0; <!--filter:invert(100%)--><!--;-->" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>    </div> #}
 
 					
+					 {# </p>  #}
 					
-					
-					
-					</p>
 					</div>
 
 				</div>
@@ -790,6 +805,29 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 		<!-- End Page wrapper  -->
 			<!-- ============================================================== -->
 		</div>
+
+<!-- Initialize the map -->
+<script>
+  (function() {
+    var map = L.map('map').setView([{{ message.latitude }}, {{ message.longitude }}], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add markers for each location
+    
+      L.marker([{{ message.latitude }}, {{ message.longitude }}]).addTo(map)
+        .bindPopup("<b>{{ message.title }}</b><br>{{ message.latitude }}, {{ message.longitude }}");
+    
+  })();
+</script>
+
+
+
+
+
+
 		<!-- ============================================================== -->
 		<!-- End Wrapper -->
 		<!-- ============================================================== -->

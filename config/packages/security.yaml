@@ -1,48 +1,65 @@
 security:
+
+
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
         Symfony\Component\Security\Core\Technician\PasswordAuthenticatedUserInterface: 'auto'
+        Symfony\Component\Security\Core\Admin\PasswordAuthenticatedUserInterface: 'auto'
+
 
      # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
         # used to reload user from session & other features (e.g. switch_user)
        
+
+
+        technicians:
+            entity:
+                class: App\Entity\Technician
+                property: email
+     
        
        
        
-        app_user_provider:
+        user_provider:
             entity:
                 class: App\Entity\User
                 property: email
 
-        app_technician_provider:
+
+        admin:
             entity:
-               class: App\Entity\Technician
-               property: email
+                class: App\Entity\Admin
+                property: email
+       
+
+        # technician_provider:
+        #     entity:
+        #        class: App\Entity\Technician
+        #        property: email
 
         all_users:
             chain:
-                providers: ['app_user_provider', 'app_technician_provider']    
+                providers: ['user_provider', 'technicians','admin']    
 
               
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        
-
-
         main:
             # pattern: ^/admin
+            # anonymous: true
             lazy: true
             provider: all_users
-           
-          
+
+    
+            # guard:
+            #     authenticators:
+            #         - App\Security\TechnicianAuthenticator
 
 
-         
 
 
             
@@ -70,7 +87,8 @@ security:
         - { path: ^/users, roles: ROLE_ADMIN }
         - { path: ^/technician/, roles: ROLE_ADMIN }
         - { path: ^/technician/, roles: ROLE_ADMIN }
-        - { path: ^/task/, roles: ROLE_ADMIN }
+        # - { path: ^/task/, roles: ROLE_ADMIN }
+        
         - { path: ^/building/, roles: ROLE_ADMIN }
         - { path: ^/infrastructure/, roles: ROLE_ADMIN }
         - { path: ^/Dashboard, roles: ROLE_ADMIN }
@@ -126,6 +144,12 @@ when@test:
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
 
+
+            Symfony\Component\Security\Core\Admin\PasswordAuthenticatedUserInterface:
+                algorithm: auto
+                cost: 4 # Lowest possible value for bcrypt
+                time_cost: 3 # Lowest possible value for argon
+                memory_cost: 10 # Lowest possible value for argon
 
 
 

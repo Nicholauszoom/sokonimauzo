@@ -13,12 +13,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PropertyInfo\Type;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[Route('/messages')]
 class MessagesController extends AbstractController
 {
-// private $security;
+private $latitude;
+private $longitude;
     
     #[Route('/', name: 'app_messages_index', methods: ['GET'])]
     public function index(MessagesRepository $messagesRepository ): Response
@@ -26,15 +31,6 @@ class MessagesController extends AbstractController
 
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        // $user = $this->security->getUser();
-        // $userId = $user ? $user->getId() :null;
-
-        // if ($userId) {
-        //     $message = $messagesRepository->findAllByUserId($userId);
-        // } else {
-        //     $message = [];
-        // }
-       
        
         
         return $this->render('messages/index.html.twig', [
@@ -43,31 +39,22 @@ class MessagesController extends AbstractController
     }
 
 
-
-    // #[Route('/new', name: 'app_messages_new', methods: ['GET', 'POST'])]
-    // public function new(Request $request, MessagesRepository $messagesRepository): Response
-    // {
-    //     $message = new Messages();
-    //     $form = $this->createForm(MessagesType::class, $message);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         $messagesRepository->save($message, true);
-
-    //         return $this->redirectToRoute('app_messages_index', [], Response::HTTP_SEE_OTHER);
-    //     }
+    #[Route('/read', name: 'app_messages_read', methods: ['GET'])]
+    public function read(MessagesRepository $messagesRepository ): Response
+    {
         
+        return $this->render('messages/readmessage.html.twig', [
+            'messages' => $messagesRepository->findAll(),
+        ]);
+    }
 
-    //     return $this->renderForm('messages/new.html.twig', [
-    //         'message' => $message,
-    //         'messages' => $messagesRepository->findAll(),
-    //         'form' => $form,
-    //     ]);
-    // }
 
+
+
+    
 //current modification
     #[Route('/new', name: 'app_messages_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, MessagesRepository $messagesRepository): Response
+    public function new(Request $request, MessagesRepository $messagesRepository,ValidatorInterface $validator): Response
     {
 
       
@@ -81,29 +68,10 @@ class MessagesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
  
-            // dump($request->request->get('location_latitude'));
-            // dump($request->request->get('location_longitude'));
-
-
-            //  if ($message->getLatitude() !== null) {
-            //     $message->setLatitude($request->request->get('latitude'));
-            // }
-
-            // if ($message->getLongitude() !== null) {
-            //     $message->setLongitude($request->request->get('longitude'));
-            // }
-
-
-
-           
-             // $message->setLatitude($request->request->get('location')['latitude']);
-            // $message->setLongitude($request->request->get('location')['longitude']);
-            // $message = array(
-            //     'latitude' => $request->request->get('location')['latitude'],
-            //     'longitude' => $request->request->get('location')['longitude']
-            // );
-
-
+        
+ 
+            // $message->setLatitude($latitude);
+            // $message->setLongitude($longitude);
             $message =$form -> getData();
             $imagePath =$form->get('imagePath')->getData();
             if($imagePath){
@@ -122,6 +90,9 @@ class MessagesController extends AbstractController
 
             return $this->redirectToRoute('app_messages_new', [], Response::HTTP_SEE_OTHER);
         }
+    // } else {
+    // return null;
+    // }
         
             // $messages = $messagesRepository->findAllByUserId($userId);
 
@@ -134,6 +105,9 @@ class MessagesController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+
+
 
     #[Route('/{id}', name: 'app_messages_show', methods: ['GET'])]
     public function show(Messages $message): Response
@@ -205,4 +179,13 @@ public function getMssgByUserId(MessagesRepository $messagesRepository,Security 
             
         ]);
     }
+
+
+
+      
+    // #[Route('/location_page', name: 'app_location_index', methods: ['GET'])]
+    // public function getLocationPage(): Response
+    // {
+    //     return $this->render('messages/location.html.twig');
+    // }
 }
