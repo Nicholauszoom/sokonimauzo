@@ -40,21 +40,44 @@ private $longitude;
 
 
     #[Route('/read', name: 'app_messages_read', methods: ['GET'])]
-    public function read(MessagesRepository $messagesRepository ): Response
+    public function read(MessagesRepository $messagesRepository,Security $security ): Response
     {
+
+        $user=$security->getUser();
+
+        $message = $messagesRepository->findAllByUserId($user->getId());
+
         
         return $this->render('messages/readmessage.html.twig', [
-            'messages' => $messagesRepository->findAll(),
+            // 'messages' => $messagesRepository->findAll(),
+            'messages'=>$message,
         ]);
     }
 
 
 
 
+    #[Route('/student_message', name: 'app_message_student_view', methods: ['GET'])]
+    public function view_by_student(MessagesRepository $messagesRepository, Security $security): Response
+    {
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+      $user=$security->getUser();
+
+        $message = $messagesRepository->findAllByUserId($user->getId());
+
+        return $this->render('task/technicianview.html.twig', [
+            // 'tasks' => $taskRepository->findAll(),
+            'messages'=>$message,
+           
+        ]); 
+    }
+
+
     
 //current modification
     #[Route('/new', name: 'app_messages_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, MessagesRepository $messagesRepository,ValidatorInterface $validator): Response
+    public function new(Request $request, MessagesRepository $messagesRepository,ValidatorInterface $validator,Security $security): Response
     {
 
       
@@ -68,7 +91,8 @@ private $longitude;
 
         if ($form->isSubmitted() && $form->isValid()) {
  
-        
+            // $data = $form->getData();
+            // $latitude = $data['latitude'];
  
             // $message->setLatitude($latitude);
             // $message->setLongitude($longitude);
@@ -93,6 +117,10 @@ private $longitude;
     // } else {
     // return null;
     // }
+    $user=$security->getUser();
+
+    $messagess = $messagesRepository->findAllByUserId($user->getId());
+
         
             // $messages = $messagesRepository->findAllByUserId($userId);
 
@@ -101,7 +129,8 @@ private $longitude;
         return $this->renderForm('messages/new.html.twig', [
              
             'message' => $message,
-            'messages' => $messagesRepository->findAll(),
+            // 'messages' => $messagesRepository->findAll(),
+            'messages'=>$messagess,
             'form' => $form->createView(),
         ]);
     }

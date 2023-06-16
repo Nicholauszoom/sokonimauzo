@@ -90,10 +90,6 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
            
-        
-
-
-
          $email = (new Email())
             ->from('nicholaussomi5@gmail.com')
             ->to($task->getTechn())

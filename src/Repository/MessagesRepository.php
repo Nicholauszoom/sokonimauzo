@@ -65,7 +65,10 @@ class MessagesRepository extends ServiceEntityRepository
 //    }
 
 
- /**
+ /** 
+  * @param int $userId The user ID to filter by.
+
+  * 
   * @return Messages[] Returns an array of Messages objects
     */
 // public function findAllByUserId($userId): array
@@ -77,6 +80,14 @@ class MessagesRepository extends ServiceEntityRepository
 //         ->getQuery()
 //         ->getResult();
 // }
-
+public function findAllByUserId($userId)
+{
+    return $this->createQueryBuilder('u')
+        ->join('u.user', 'user')
+        ->andWhere('user.id = :userId')
+        ->setParameter('userId', $userId)
+        ->getQuery()
+        ->getResult();
+}
 
 }

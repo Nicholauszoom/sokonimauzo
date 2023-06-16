@@ -15,7 +15,7 @@
              {{ form_row(form.time)}}
                 {{ form_row(form.user)}}
 
-    <button type="button" id="find-state">Get Location</button>
+    {# <button type="button" id="get-location-btn">Get Location</button> #}
          {{ form_row(form.latitude)}}
         {{ form_row(form.longitude)}}
        
@@ -34,11 +34,33 @@
         <i class="mdi mdi-send fs-3"></i
     </button> #}
 
-    
    
 {{ form_end(form) }}
 
 <script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+
+function showPosition(position) {
+ 
+   var longitude = position.coords.longitude;
+   var latitude = position.coords.latitude;
+    console.log(longitude);
+    console.log(latitude);
+        document.getElementById("messages_longitude").value = longitude;
+        document.getElementById("messages_latitude").value = latitude;
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+  getLocation();
+});
+</script>
+{# <script>
     const captureButton = document.getElementById('capture-button');
     const cameraImage = document.getElementById('cameraImage');
 
@@ -63,15 +85,60 @@
                 console.error('Error accessing camera:', error);
             });
     });
-</script>
+
+
+</script> #}
 
 
 
+{# 
+ <script>
+document.addEventListener("DOMContentLoaded", function(event) {
+  getLocation();
+});
+</script> #}
 
+  
+ {# <script>
+    if (navigator.geolocation) {
+    document.getElementById('get-location-btn').addEventListener('click', function() {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            console.log('Latitude:', position.coords.latitude);
+            console.log('Longitude:', position.coords.longitude);
+            document.getElementById('latitude').value = position.coords.latitude;
+            document.getElementById('longitude').value = position.coords.longitude;
+        });
+    });
+} else {
+    alert('Geolocation is not supported by this browser.');
+}
+</script>  #}
+  
+{# <script>
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
 
+function showPosition(position) {
+ 
+   var longitude = position.coords.longitude;
+   var latitude = position.coords.latitude;
+    console.log(longitude);
+    console.log(latitude);
+        document.getElementById('longitude').value = longitude;
+        document.getElementById('latitude').value = latitude;
+}
 
+document.addEventListener("DOMContentLoaded", function(event) {
+  getLocation();
+});
+</script> #}
 
-
+{# 
 
 <script>
 const findMyState = ()  => {
@@ -136,7 +203,7 @@ if (navigator.getUserMedia) {
 }
 </script>
 
-
+ #}
 
 
 
@@ -177,21 +244,5 @@ if (navigator.getUserMedia) {
 
 
 
-
-{# 
- <script>
-    if (navigator.geolocation) {
-    document.getElementById('get-location-btn').addEventListener('click', function() {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            console.log('Latitude:', position.coords.latitude);
-            console.log('Longitude:', position.coords.longitude);
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
-        });
-    });
-} else {
-    alert('Geolocation is not supported by this browser.');
-}
-</script> #} 
 
 </div>

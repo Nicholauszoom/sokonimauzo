@@ -15,6 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
 
@@ -22,11 +23,17 @@ class MessagesType extends AbstractType
 {
     
     public function __construct(
-        private Security $security,
+        private Security $security
     ){
     }
+
+
+
     public function buildForm( FormBuilderInterface $builder, array $options): void
     {
+        $user = $this->security->getUser();
+          
+   
         
         $builder
 //            ->add('title')
@@ -70,11 +77,13 @@ class MessagesType extends AbstractType
                     // 'label' => ['image upload',
                     //             'class'=>'col-md-3'
                     // ],
+                    'label' => 'Upload file (max size 10MB)',
                     'attr'=>array(
                         'class'=>'custom-file-input',
                         'required'=>false,
-
+                        'maxSize' => '10M',
                         'mapped'=>false
+                        
 
                     ),
 
@@ -142,29 +151,48 @@ class MessagesType extends AbstractType
             ])
 
 
-            ->add('user', EntityType::class, [
+            // ->add('user', EntityType::class, [
 
-                // looks for choices from this entity
-                'class' => User::class,
-                // 'value' =>$this->security->getUser(),
-                // uses the User.username property as the visible option string
-                // 'choice_label' => 'name',
-                // value="email@flowbite.com"
-                'choice_label' => function ($user) {
-                    
-                    // return $user->getUser();
-
-                   return $user = $this->security->getUser();
+            //     'class' => User::class,
+               
+               
+            //     'choice_label' => function ($user) {
+                   
+            //      return $user = $this->security->getUser();
                 
-                }
+            //     }
+            // ])
+
+            // ->add('user', HiddenType::class, [
+            //     'class' => User::class,
+            //     // 'choice_label' => 'firstName',
+            //     'data' => $user->getId(), // Set the default data to the current user
+            // ])
+
+            // ->add('user', TextType::class, [
+            //     // 'class' => User::class,
+            //     'data' => $user->getId(),
+            // ])
                
 
+            ->add('user', EntityType::class, [
+                'class' => User::class,
+                'choice_label' => 'firstName', // or any other property you want to use as the label
+                'data' => $user, // assuming $user is an instance of User entity
             ])
-            ->add('longitude', TextType::class)
-            ->add('latitude', TextType::class)
-
+            // ->add('longitude', TextType::class, [
+            //     'attr' => [
+            //         'id' => 'longitude'
+            //     ]
+            // ])
+            // ->add('latitude', TextType::class, [
+            //     'attr' => [
+            //         'id' => 'latitude'
+            //     ]
+            // ])
          
-            
+            ->add('longitude', HiddenType::class)
+            ->add('latitude', HiddenType::class)
 
  
         ;
