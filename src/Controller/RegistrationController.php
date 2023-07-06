@@ -63,12 +63,13 @@ class RegistrationController extends AbstractController
             ->from('ardhihelpdesk@example.com')
             ->to($user->getEmail())
             ->subject('Alredy you have an account in Helpdesk Support System!')
-            ->text('Dr {$user->getName()}! you alredy have an account in 
+            ->text('Hello! THis is Admin for Ardhi Help desk system
+                    you alredy been registered  
                     Ardhi University Help Desk Support System .
                     You can now report to us damaged assets in side Ardhi University campus
-                    via. our website "http://localhost:8000/" use:passward :____ and username :___.
+                    Through our website "http://localhost:8000/" use:passward :12345678 and this username.
 
-                    for more info and  procudure how to use this website click: http://localhost:8000/about
+                    For more info and  procudure how to use this website click: http://localhost:8000/about
             ');
 
         $mailer ->send($email);    

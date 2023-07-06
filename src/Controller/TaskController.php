@@ -17,6 +17,7 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 #[Route('/task')]
 class TaskController extends AbstractController
@@ -37,37 +38,36 @@ class TaskController extends AbstractController
     #[Route('/', name: 'app_task_index', methods: ['GET'])]
     public function index(TaskRepository $taskRepository): Response
     {
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+    
+        // $tasks = $taskRepository->countTasksWithStatusOneByMonth();
+        // $results =$taskRepository->countTasksWithStatusOneByMonth();
+        
 
+        // $labels = [];
+        // $data = [];
 
-
+        // foreach ($results as $task) {
+        //     $labels[] = $task['year'] . '-' . $task['month'];
+        //     $data[] = $task['task_count'];
+        // }
+        // $results = $taskRepository->countTasksWithStatusOneByMonth();
+        // return $this->render('chart/index.html.twig', [
+        //     'labels' => $labels,
+        //     'data' => $data,
+        // ]);
         return $this->render('task/index.html.twig', [
             'tasks' => $taskRepository->findAll(),
+            // 'labels' => $labels,
+            // 'data' => $data,
+            // 'results' => $results
            
         ]); 
     }
 
-
-    // #[Route('/technicianview', name: 'app_task_techn_view', methods: ['GET'])]
-    // public function view_by_technician(TaskRepository $taskRepository): Response
-    // {
-    //     // $this->denyAccessUnlessGranted('ROLE_ADMIN');
-    //     // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
-
-
-
-    //     return $this->render('task/technicianview.html.twig', [
-    //         'tasks' => $taskRepository->findAll(),
-           
-    //     ]); 
-    // }
-
     #[Route('/techn_task', name: 'app_task_techn_view', methods: ['GET'])]
     public function view_by_technician(TaskRepository $taskRepository, Security $security): Response
     {
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        // $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+     
       $techn=$security->getUser();
 
         $tasks = $taskRepository->findByTechnicianId($techn->getId());
@@ -93,9 +93,10 @@ class TaskController extends AbstractController
          $email = (new Email())
             ->from('nicholaussomi5@gmail.com')
             ->to($task->getTechn())
+            // ->to('nicholauszoom95@gmail.com')
             ->subject('HelpDesk support system ,You have assigned a new task')
             ->text('You have assigned new task to conduct for more info visit our official website https:\\localhost:8000
-             THANK YOU!
+                THANK YOU!
             ');
 
         $mailer ->send($email);    
@@ -232,8 +233,28 @@ public function editTaskStatusAction(Request $request, $id)
 
 //     return Command::SUCCESS;
 // }
+ 
 
 
-    
 
+
+ 
+//      #[Route('/chart', name: 'app_task_chart')]
+//     public function create_bar_chart(TaskRepository $taskRepository): Response
+//     {
+//         $tasks = $taskRepository->getTaskCountsByMonth();
+
+//         $labels = [];
+//         $data = [];
+
+//         foreach ($tasks as $task) {
+//             $labels[] = $task['year'] . '-' . $task['month'];
+//             $data[] = $task['task_count'];
+//         }
+
+//         return $this->render('chart/index.html.twig', [
+//             'labels' => $labels,
+//             'data' => $data,
+//         ]);
+// }
 }

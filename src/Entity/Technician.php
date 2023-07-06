@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TechnicianRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -40,7 +42,7 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
     private ?string $email = null;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ['ROLE_TECHNICIAN'];
 
 
     #[ORM\Column(length: 255)]
@@ -51,6 +53,14 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\ManyToMany(targetEntity: Roles::class)]
+    private Collection $role;
+
+    public function __construct()
+    {
+        $this->role = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -172,9 +182,37 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
     }
 
 
+    // public function isTechnician():bool
+    // {
+    //    return in_array(self::ROLE_TECHNICIAN,$this->getRoles());
+    // }
     public function isTechnician():bool
     {
        return in_array(self::ROLE_TECHNICIAN,$this->getRoles());
+    }
+
+    /**
+     * @return Collection<int, Roles>
+     */
+    public function getRole(): Collection
+    {
+        return $this->role;
+    }
+
+    public function addRole(Roles $role): self
+    {
+        if (!$this->role->contains($role)) {
+            $this->role->add($role);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Roles $role): self
+    {
+        $this->role->removeElement($role);
+
+        return $this;
     }
    
 }

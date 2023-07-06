@@ -4,7 +4,9 @@ namespace App\Repository;
 
 use App\Entity\Task;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Doctrine\Functions\MySqlYear;
 
 /**
  * @extends ServiceEntityRepository<Task>
@@ -14,11 +16,15 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Task[]    findAll()
  * @method Task[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
+
+
 class TaskRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    
+    public function __construct(ManagerRegistry $registry,EntityManagerInterface $entityManager)
     {
         parent::__construct($registry, Task::class);
+        // $this->entityManager=$entityManager;
     }
 
     public function save(Task $entity, bool $flush = false): void
@@ -38,6 +44,7 @@ class TaskRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
 
 //    /**
 //     * @return Task[] Returns an array of Task objects
@@ -99,4 +106,92 @@ class TaskRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+
+
+
+    // public function getTaskCountsByMonth(): array
+    // {
+        
+    //     return $this->createQueryBuilder('t')
+    //         ->select('COUNT(t.id) AS task_count, (t.start_at) AS year, (t.start_at) AS month')
+    //         ->where('t.status = 1')
+    //         ->groupBy('year, month')
+    //         ->orderBy('year, month')
+    //         ->getQuery()
+    //         ->getResult();
+    // }
+
+    // ANALYSIS OF THE SUCCESSFUL TASKS PER MONTH AND ANNNUALLY
+    public function countTasksWithStatusOneByMonth()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('YEAR(t.start_at) AS year, MONTH(t.start_at) AS month, COUNT(t.id) AS task_count')
+           ->where('t.status = :status')
+           ->setParameter('status', 1)
+           ->groupBy('year, month')
+           ->orderBy('year, month');
+
+        return $qb->getQuery()->getResult();
+ 
+
+    }
+
+
+    // ANALYSIS OF THE FAIL TASKS PER MONTH AND ANNNUALLY
+    public function countFailedTasksWithStatusOneByMonth()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('YEAR(t.start_at) AS year, MONTH(t.start_at) AS month, COUNT(t.id) AS ftask_count')
+           ->where('t.status = :status')
+           ->setParameter('status', 0)
+           ->groupBy('year, month')
+           ->orderBy('year, month');
+
+        return $qb->getQuery()->getResult();
+ 
+
+    }
+
+    // TOTAL NUMBER OF THE SUCCESS TASKS 
+
+    public function totalSuccesTask()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('COUNT(t.id) AS total_success')
+           ->where('t.status = :status')
+           ->setParameter('status', 1);
+          
+
+        return $qb->getQuery()->getResult();
+    }
+ 
+        // TOTAL NUMBER OF THE FAILED TASKS 
+
+    public function totalFailedTask()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('COUNT(t.id) AS total_fail')
+           ->where('t.status = :status')
+           ->setParameter('status', 0);
+           
+
+        return $qb->getQuery()->getResult();
+ 
+   
 }
+
+// TOTAL TASK
+    public function totalTask()
+    {
+        $qb = $this->createQueryBuilder('t');
+        $qb->select('COUNT(t.id) AS total_task');
+          
+
+        return $qb->getQuery()->getResult();
+ 
+   
+}
+
+}
+

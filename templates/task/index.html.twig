@@ -680,7 +680,89 @@
             </div>
         </div>
     </div>
-</div>
+</div> 
+
+    {# <h1>Task Bar chart</h1>
+
+    <canvas id="taskChart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById('taskChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|json_encode|raw }},
+                datasets: [{
+                    label: 'Tasks with Status 1',
+                    data: {{ data|json_encode|raw }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script> #}
+
+<!-- Include Chart.js in your HTML -->
+{# <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Create a canvas element for the chart -->
+<canvas id="myChart"></canvas>
+
+<!-- Create a script to generate the chart -->
+<script>
+// Get the results from the server-side query
+var results =  {{ json_encode.$results }};
+
+// Extract the years, months, and counts from the results
+var years = [];
+var months = [];
+var counts = [];
+for (var i = 0; i < results.length; i++) {
+    years.push(results[i].year);
+    months.push(results[i].month);
+    counts.push(results[i].count);
+}
+
+// Create a new Chart.js chart
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: months.map(function(month) {
+            return month + '/' + years[0]; // Format the labels as MM/YYYY
+        }),
+        datasets: [{
+            label: 'Number of tasks with status 1',
+            data: counts,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script> #}
+
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->

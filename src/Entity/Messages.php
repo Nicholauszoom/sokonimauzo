@@ -32,13 +32,13 @@ class Messages
     // #[ORM\JoinColumn(nullable: false)]
     // private ?Infrastructure $infrastructure = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'messages')]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private ?Classroom $classroom = null;
+    #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Classroom $classroom = null;
 
-    // #[ORM\ManyToOne(inversedBy: 'messages')]
-    // #[ORM\JoinColumn(nullable: false)]
-    // private ?Building $building = null;
+    #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Building $building = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $time = null;
@@ -54,6 +54,9 @@ class Messages
  
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $longitude =null;
+
+    #[ORM\ManyToOne]
+    private ?Officess $office = null;
 
   
 
@@ -110,29 +113,29 @@ class Messages
     //     return $this;
     // }
 
-    // public function getClassroom(): ?Classroom
-    // {
-    //     return $this->classroom;
-    // }
+    public function getClassroom(): ?Classroom
+    {
+        return $this->classroom;
+    }
 
-    // public function setClassroom(?Classroom $classroom): self
-    // {
-    //     $this->classroom = $classroom;
+    public function setClassroom(?Classroom $classroom): self
+    {
+        $this->classroom = $classroom;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function getBuilding(): ?Building
-    // {
-    //     return $this->building;
-    // }
+    public function getBuilding(): ?Building
+    {
+        return $this->building;
+    }
 
-    // public function setBuilding(?Building $building): self
-    // {
-    //     $this->building = $building;
+    public function setBuilding(?Building $building): self
+    {
+        $this->building = $building;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getTime(): ?\DateTimeInterface
     {
@@ -189,6 +192,18 @@ class Messages
     public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    public function getOffice(): ?Officess
+    {
+        return $this->office;
+    }
+
+    public function setOffice(?Officess $office): self
+    {
+        $this->office = $office;
 
         return $this;
     }

@@ -22,6 +22,14 @@ class Roles
     #[ORM\Column]
     private ?bool $status = null;
 
+    // #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'role')]
+    // private Collection $users;
+
+    // public function __construct()
+    // {
+    //     $this->users = new ArrayCollection();
+    // }
+
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'roles')]
     #[ORM\JoinColumn(nullable: false)]
     // #[Assert\NotBlank]
@@ -93,4 +101,34 @@ class Roles
 
     //     return $this;
     // }
+
+    // /**
+    //  * @return Collection<int, User>
+    //  */
+    // public function getUsers(): Collection
+    // {
+    //     return $this->users;
+    // }
+
+    // public function addUser(User $user): self
+    // {
+    //     if (!$this->users->contains($user)) {
+    //         $this->users->add($user);
+    //         $user->addRole($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeUser(User $user): self
+    // {
+    //     if ($this->users->removeElement($user)) {
+    //         $user->removeRole($this);
+    //     }
+
+    //     return $this;
+    // }
+    public function __toString() {
+        return $this->name;
+    }
 }

@@ -56,7 +56,6 @@ class InfrastructureType extends AbstractType
                     'attr'=>array(
                         'class'=>'py-10 my-5',
                         'required'=>false,
-
                         'mapped'=>false
 
                     ),

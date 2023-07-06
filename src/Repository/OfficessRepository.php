@@ -63,4 +63,14 @@ class OfficessRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function findOfficeByBuildingId($buildingId)
+{
+    return $this->createQueryBuilder('o')
+        ->join('o.building', 'building')
+        ->andWhere('building.id = :buildingId')
+        ->setParameter('userId', $buildingId)
+        ->getQuery()
+        ->getResult();
+}
 }

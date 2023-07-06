@@ -37,6 +37,19 @@ private $longitude;
             'messages' => $messagesRepository->findAll(),
         ]);
     }
+    #[Route('/message', name: 'app_messages_index2_techn', methods: ['GET'])]
+    public function get(MessagesRepository $messagesRepository ): Response
+    {
+
+        $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
+
+       
+        
+        return $this->render('messages/techn_view_message.html.twig', [
+            'messages' => $messagesRepository->findAll(),
+        ]);
+    }
+
 
 
     #[Route('/read', name: 'app_messages_read', methods: ['GET'])]
@@ -144,6 +157,17 @@ private $longitude;
        
 
         return $this->render('messages/show.html.twig', [
+            'message' => $message,
+        ]);
+    }
+
+
+    #[Route('/{id}', name: 'text_show_techn', methods: ['GET'])]
+    public function technshowbyid(Messages $message): Response
+    {
+       
+
+        return $this->render('messages/techn_show_by_id.html.twig', [
             'message' => $message,
         ]);
     }

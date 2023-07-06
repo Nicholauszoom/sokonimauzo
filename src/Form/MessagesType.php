@@ -7,6 +7,8 @@ use App\Entity\Building;
 use App\Entity\Classroom;
 use App\Entity\Infrastructure;
 use App\Entity\Messages;
+use App\Validator\CheckInfrastructureIdExists;
+use App\Validator\UniqueEntityId;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\AbstractType;
@@ -18,6 +20,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Security;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class MessagesType extends AbstractType
 {
@@ -95,53 +98,52 @@ class MessagesType extends AbstractType
             //     'required' => false,
             // ])
 
-//             ->add('infrastructure', EntityType::class, [
-
-//                 // looks for choices from this entity
-//                 'class' => Infrastructure::class,
-//                 // uses the User.username property as the visible option string
-//                 // 'choice_label' => 'name',
-// //                 'multiple' => true,
-//                  'expanded' => true,
-//                 'choice_label' => function ($infrastructure) {
-//                     return $infrastructure->getName();
-//                 }
-//                 // used to render a select box, check boxes or radios
-//                 // 'multiple' => true,
-//                 // 'expanded' => true,
-
-//             ])
-
-
-            // ->add('classroom', EntityType::class, [
-
-            //     // looks for choices from this entity
-            //     'class' => Classroom::class,
-            //     // uses the User.username property as the visible option string
-            //     // 'choice_label' => 'name',
-            //     'choice_label' => function ($classroom) {
-            //         return $classroom->getName();
-            //     }
-            //     // used to render a select box, check boxes or radios
-            //     // 'multiple' => true,
-            //     // 'expanded' => true,
-
+            // ->add('infrastructure', EntityType::class, [
+            //     'class' => Infrastructure::class,
+            //     'choice_label' => function ($infrastructure) {
+            //         return $infrastructure->getName();
+            //     },
+            //     // 'constraints' => [
+            //     //     new NotBlank(),
+            //     //     new CheckInfrastructureIdExists(),
+            //     // ],
+            // ])
+            // ->add('user', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'firstName', // or any other property you want to use as the label
+            //     'data' => $user, // assuming $user is an instance of User entity
             // ])
 
-            // ->add('building', EntityType::class, [
 
-            //     // looks for choices from this entity
-            //     'class' => Building::class,
-            //     // uses the User.username property as the visible option string
-            //     // 'choice_label' => 'name',
-            //     'choice_label' => function ($building) {
-            //         return $building->getName();
-            //     }
-            //     // used to render a select box, check boxes or radios
-            //     // 'multiple' => true,
-            //     // 'expanded' => true,
+            ->add('classroom', EntityType::class, [
 
-            // ])
+                // looks for choices from this entity
+                'class' => Classroom::class,
+                // uses the User.username property as the visible option string
+                // 'choice_label' => 'name',
+                'choice_label' => function ($classroom) {
+                    return $classroom->getName();
+                }
+                // used to render a select box, check boxes or radios
+                // 'multiple' => true,
+                // 'expanded' => true,
+
+            ])
+
+            ->add('building', EntityType::class, [
+
+                // looks for choices from this entity
+                'class' => Building::class,
+                // uses the User.username property as the visible option string
+                // 'choice_label' => 'name',
+                'choice_label' => function ($building) {
+                    return $building->getName();
+                }
+                // used to render a select box, check boxes or radios
+                // 'multiple' => true,
+                // 'expanded' => true,
+
+            ])
             ->add('time', DateType::class, [
 
                 'widget' => 'single_text',
@@ -202,6 +204,10 @@ class MessagesType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Messages::class,
+            // 'constraints' => [
+            //     new UniqueEntityId(),
+                
+            // ],
         ]);
     }
 }

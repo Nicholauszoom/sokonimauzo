@@ -1,93 +1,5 @@
 
 
-
-{# target flowable template start #}
-{# {% extends 'base2.html.twig' %}
-
-{% block title %}Messages index{% endblock %}
-
-{% block body %}
-
-    <main class="flex-1 flex bg-gray-50 mx-auto w-full">
-        <section class="bg-gray-50 dark:bg-gray-50  w-full">
-            <div class="mx-auto w-4/5 my-8">
-                {# <h1 class="text-6xl pt-12 pb-8">
-                Recent Posts ({{ messages|length }})
-            </h1> #}
-                {# <a
-                        href="{{ path('app_messages_new') }}"
-                        class="uppercase border border-gray-500 text-lg py-4 px-6 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
-                    Create New
-                </a>
-            </div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Id
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Title
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Description
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Deliverd At
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-
-                    </tr>
-                    </thead>
-                    {% for message in messages %}
-                        <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ message.id }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ message.title }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ message.description }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <a
-                                        href="{{ path('app_messages_show', {'id': message.id}) }}"
-                                        class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
-                                    show
-                                </a>
-                                <a
-                                        href="{{ path('app_messages_edit', {'id': message.id}) }}"
-                                        class="bg-red-500 font-bold py-2 px-4 rounded transition-all hover:bg-red-300">
-                                    edit
-                                </a>
-                            </td>
-
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
-
-                        </tbody>
-                    {% endfor %}
-                </table>
-
-            </div>
-        </section> #}
-    {# </main>
-{% endblock %}  #}
-
-
-
-
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
    <head>
@@ -103,63 +15,6 @@
       name="description"
       content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
-
-
-        {# flowable template head --start #}
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://flowbite.com/application-ui/demo/app.css">
-<link rel="apple-touch-icon" sizes="180x180" href="https://flowbite.com/application-ui/demo/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://flowbite.com/application-ui/demo/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://flowbite.com/application-ui/demo/favicon-16x16.png">
-<link rel="icon" type="image/png" href="https://flowbite.com/application-ui/demo/favicon.ico">
-<link rel="manifest" href="https://flowbite.com/application-ui/demo/site.webmanifest">
-<link rel="mask-icon" href="https://flowbite.com/application-ui/demo/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
-<!-- Twitter -->
-{# <meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@">
-<meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
-<meta name="twitter:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
-<meta name="twitter:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg"> #}
-
-<!-- Facebook -->
-<meta property="og:url" content="https://flowbite.com/application-ui/demo/mailing/inbox/">
-<meta property="og:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
-<meta property="og:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg">
-<meta property="og:image:type" content="image/png">
-
-
-
-
-
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-141734189-9');
-</script>
-
-
-<script>
-    
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('v2fLMH8w3xgUEQcl63H9');
-    } else {
-        document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
-    }
-</script>
-
-        {# end #}
-
-
     <meta name="robots" content="noindex,nofollow" />
     <title></title>
     <!-- Favicon icon -->
@@ -206,337 +61,276 @@
       <!-- ============================================================== -->
       <!-- Topbar header - style you can find in pages.scss -->
       <!-- ============================================================== -->
-      <header class="topbar" data-navbarbg="skin5">
-        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-          <div class="navbar-header" data-logobg="skin5">
-            <!-- ============================================================== -->
-            <!-- Logo -->
-            <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.html">
-              <!-- Logo icon -->
-              <b class="logo-icon ps-2">
-                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                <!-- Dark Logo icon -->
-                <img
-                  src="../asset/images/"
-                  alt=""
-                  class="light-logo"
-                  width="25"
-                />
-              </b>
-              <!--End Logo icon -->
-              <!-- Logo text -->
-              <span class="logo-text ms-2">
-                <!-- dark Logo text -->
-                <img
-                  src="../asset/images/"
-                  alt=""
-                  class="light-logo"
-                />
-              </span>
-              <!-- Logo icon -->
-              <!-- <b class="logo-icon"> -->
-              <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-              <!-- Dark Logo icon -->
-              <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+     	<header class="topbar" data-navbarbg="skin5"> <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+					<div class="navbar-header" data-logobg="skin5">
+						<!-- ============================================================== -->
+						<!-- Logo -->
+						<!-- ============================================================== -->
+							<a
+							class="navbar-brand" href="index.html"> <!-- Logo icon -->
+							<b class="chat-img">
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+									<a class="
+										                    nav-link
+										                    dropdown-toggle
+										                    text-muted
+										                    waves-effect waves-dark
+										                    pro-pic
+										                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../asset/images/users/user-100.png" alt="user" class="rounded-circle" width="31"/>
+									{{app.user.email}}
+								</a>
+							</b>
 
-              <!-- </b> -->
-              <!--End Logo icon -->
-            </a>
-            <!-- ============================================================== -->
-            <!-- End Logo -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Toggle which is visible on mobile only -->
-            <!-- ============================================================== -->
-            <a
-              class="nav-toggler waves-effect waves-light d-block d-md-none"
-              href="javascript:void(0)"
-              ><i class="ti-menu ti-close"></i
-            ></a>
-          </div>
-          <!-- ============================================================== -->
-          <!-- End Logo -->
-          <!-- ============================================================== -->
-          <div
-            class="navbar-collapse collapse"
-            id="navbarSupportedContent"
-            data-navbarbg="skin5"
-          >
-            <!-- ============================================================== -->
-            <!-- toggle and nav items -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav float-start me-auto">
-              <li class="nav-item d-none d-lg-block">
-                <a
-                  class="nav-link sidebartoggler waves-effect waves-light"
-                  href="javascript:void(0)"
-                  data-sidebartype="mini-sidebar"
-                  ><i class="mdi mdi-menu font-24"></i
-                ></a>
-              </li>
-              <!-- ============================================================== -->
-              <!-- create new -->
-              <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <span class="d-none d-md-block"
-                    >Create New <i class="fa fa-angle-down"></i
-                  ></span>
-                  <span class="d-block d-md-none"
-                    ><i class="fa fa-plus"></i
-                  ></span>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#"></a></li>
-                  <li><a class="dropdown-item" href="{{ path('app_register') }}">Create user</a></li>
-                  <li>
-                    {# <a class="dropdown-item" href="#">Something else here</a> #}
-                  </li>
-                </ul>
-              </li>
-              <!-- ============================================================== -->
-              <!-- Search -->
-              <!-- ============================================================== -->
-              <li class="nav-item search-box">
-                <a
-                  class="nav-link waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  ><i class="mdi mdi-magnify fs-4"></i
-                ></a>
-                <form class="app-search position-absolute">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search &amp; enter"
-                  />
-                  <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                </form>
-              </li>
-            </ul>
-            <!-- ============================================================== -->
-            <!-- Right side toggle and nav items -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav float-end">
-              <!-- ============================================================== -->
-              <!-- Comment -->
-              <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="mdi mdi-bell font-24"></i>
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                </ul>
-              </li>
-              <!-- ============================================================== -->
-              <!-- End Comment -->
-              <!-- ============================================================== -->
-              <!-- ============================================================== -->
-              <!-- Messages -->
-              <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle waves-effect waves-dark"
-                  href="#"
-                  id="2"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="font-24 mdi mdi-comment-processing"></i>
-                </a>
-                <ul
-                  class="
-                    dropdown-menu dropdown-menu-end
-                    mailbox
-                    animated
-                    bounceInDown
-                  "
-                  aria-labelledby="2"
-                >
-                  <ul class="list-style-none">
-                    <li>
-                      <div class="">
-                        <!-- Message -->
-                        <a href="javascript:void(0)" class="link border-top">
-                          <div class="d-flex no-block align-items-center p-10">
-                            <span
-                              class="
-                                btn btn-success btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                              ><i class="mdi mdi-calendar text-white fs-4"></i
-                            ></span>
-                            <div class="ms-2">
-                              <h5 class="mb-0">Event today</h5>
-                              <span class="mail-desc"
-                                >Just a reminder that event</span
-                              >
-                            </div>
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a href="javascript:void(0)" class="link border-top">
-                          <div class="d-flex no-block align-items-center p-10">
-                            <span
-                              class="
-                                btn btn-info btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                              ><i class="mdi mdi-settings fs-4"></i
-                            ></span>
-                            <div class="ms-2">
-                              <h5 class="mb-0">Settings</h5>
-                              <span class="mail-desc"
-                                >You can customize this template</span
-                              >
-                            </div>
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a href="javascript:void(0)" class="link border-top">
-                          <div class="d-flex no-block align-items-center p-10">
-                            <span
-                              class="
-                                btn btn-primary btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                              ><i class="mdi mdi-account fs-4"></i
-                            ></span>
-                            <div class="ms-2">
-                              <h5 class="mb-0">Pavan kumar</h5>
-                              <span class="mail-desc"
-                                >Just see the my admin!</span
-                              >
-                            </div>
-                          </div>
-                        </a>
-                        <!-- Message -->
-                        <a href="javascript:void(0)" class="link border-top">
-                          <div class="d-flex no-block align-items-center p-10">
-                            <span
-                              class="
-                                btn btn-danger btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                              ><i class="mdi mdi-link fs-4"></i
-                            ></span>
-                            <div class="ms-2">
-                              <h5 class="mb-0">Luanch Admin</h5>
-                              <span class="mail-desc"
-                                >Just see the my new admin!</span
-                              >
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </ul>
-              </li>
-              <!-- ============================================================== -->
-              <!-- End Messages -->
-              <!-- ============================================================== -->
 
-              <!-- ============================================================== -->
-              <!-- User profile and search -->
-              <!-- ============================================================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="
-                    nav-link
-                    dropdown-toggle
-                    text-muted
-                    waves-effect waves-dark
-                    pro-pic
-                  "
-                  href="#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="../asset/images/users/1.jpg"
-                    alt="user"
-                    class="rounded-circle"
-                    width="31"
-                  />
-                </a>
-                <ul
-                  class="dropdown-menu dropdown-menu-end user-dd animated"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="javascript:void(0)"
-                    ><i class="mdi mdi-settings me-1 ms-1"></i> Account
-                    Setting</a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="/logout"
-                    ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
-                  >
-                  <div class="dropdown-divider"></div>
-                  <div class="ps-4 p-10">
-                    <a
-                      href="javascript:void(0)"
-                      class="btn btn-sm btn-success btn-rounded text-white"
-                      >View Profile</a
-                    >
-                  </div>
-                </ul>
-              </li>
-              <!-- ============================================================== -->
-              <!-- User profile and search -->
-              <!-- ============================================================== -->
-            </ul>
-          </div>
-        </nav>
-      </header>
+							{# <div class="chat-img">
+							                          <img src="../asset/images/users/1.jpg" alt="user" /> 
+							                        </div>
+							                        <div class="chat-content">
+							                          <h6 class="font-medium">{{ app.user.firstName }}</h6> #}
+
+							<!--End Logo icon -->
+							<!-- Logo text -->
+								<span
+								class="logo-text ms-2"> <!-- dark Logo text -->
+								<img src="../asset/images/" alt="" class="light-logo"/>
+							</span>
+							<!-- Logo icon -->
+						<!-- <b class="logo-icon"> -->
+							<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+							<!-- Dark Logo icon -->
+							<!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+
+							<!-- </b> -->
+							<!--End Logo icon -->
+						</a>
+						<!-- ============================================================== -->
+						<!-- End Logo -->
+						<!-- ============================================================== -->
+						<!-- ============================================================== -->
+						<!-- Toggle which is visible on mobile only -->
+						<!-- ============================================================== -->
+							<a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"> <i class="ti-menu ti-close"></i>
+						</a>
+					</div>
+					<!-- ============================================================== -->
+					<!-- End Logo -->
+					<!-- ============================================================== -->
+						<div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5"> <!-- ============================================================== -->
+						<!-- toggle and nav items -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav float-start me-auto"> <li class="nav-item d-none d-lg-block">
+								<a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar">
+									<i class="mdi mdi-menu font-24"></i>
+								</a>
+							</li>
+							<!-- ============================================================== -->
+							<!-- create new -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="d-none d-md-block">Create New
+										<i class="fa fa-angle-down"></i>
+									</span>
+									<span class="d-block d-md-none">
+										<i class="fa fa-plus"></i>
+									</span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="#">Action</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Another action</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- Search -->
+							<!-- ============================================================== -->
+								<li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)">
+									<i class="mdi mdi-magnify fs-4"></i>
+								</a>
+								<form class="app-search position-absolute">
+									<input type="text" class="form-control" placeholder="Search &amp; enter"/>
+									<a class="srh-btn">
+										<i class="mdi mdi-window-close"></i>
+									</a>
+								</form>
+							</li>
+						</ul>
+						<!-- ============================================================== -->
+						<!-- Right side toggle and nav items -->
+						<!-- ============================================================== -->
+							<ul class="navbar-nav float-end"> <!-- ============================================================== -->
+							<!-- Comment -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="mdi mdi-bell font-24"></i>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									<li>
+										<a class="dropdown-item" href="#">Action</a>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#">Another action</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									<li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- End Comment -->
+							<!-- ============================================================== -->
+							<!-- ============================================================== -->
+							<!-- Messages -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" id="2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<i class="font-24 mdi mdi-comment-processing"></i>
+								</a>
+								<ul class="
+									                    dropdown-menu dropdown-menu-end
+									                    mailbox
+									                    animated
+									                    bounceInDown
+									                  " aria-labelledby="2">
+									<ul class="list-style-none">
+										<li>
+											<div
+												class="">
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																                                btn btn-success btn-circle
+																                                d-flex
+																                                align-items-center
+																                                justify-content-center
+																                              ">
+															<i class="mdi mdi-calendar text-white fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Event today</h5>
+															<span class="mail-desc">Just a reminder that event</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																                                btn btn-info btn-circle
+																                                d-flex
+																                                align-items-center
+																                                justify-content-center
+																                              ">
+															<i class="mdi mdi-settings fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Settings</h5>
+															<span class="mail-desc">You can customize this template</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																                                btn btn-primary btn-circle
+																                                d-flex
+																                                align-items-center
+																                                justify-content-center
+																                              ">
+															<i class="mdi mdi-account fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Pavan kumar</h5>
+															<span class="mail-desc">Just see the my admin!</span>
+														</div>
+													</div>
+												</a>
+												<!-- Message -->
+												<a href="javascript:void(0)" class="link border-top">
+													<div class="d-flex no-block align-items-center p-10">
+														<span class="
+																                                btn btn-danger btn-circle
+																                                d-flex
+																                                align-items-center
+																                                justify-content-center
+																                              ">
+															<i class="mdi mdi-link fs-4"></i>
+														</span>
+														<div class="ms-2">
+															<h5 class="mb-0">Luanch Admin</h5>
+															<span class="mail-desc">Just see the my new admin!</span>
+														</div>
+													</div>
+												</a>
+											</div>
+										</li>
+									</ul>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+							<!-- End Messages -->
+							<!-- ============================================================== -->
+
+							<!-- ============================================================== -->
+							<!-- User profile and search -->
+							<!-- ============================================================== -->
+								<li class="nav-item dropdown"> <a class="
+									                    nav-link
+									                    dropdown-toggle
+									                    text-muted
+									                    waves-effect waves-dark
+									                    pro-pic
+									                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<img src="../asset/images/users/1.jpg" alt="user" class="rounded-circle" width="31"/>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-account me-1 ms-1"></i>
+										My Profile</a>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-wallet me-1 ms-1"></i>
+										My Balance</a>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-email me-1 ms-1"></i>
+										Inbox</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="javascript:void(0)">
+										<i class="mdi mdi-settings me-1 ms-1"></i>
+										Account
+										                    Setting</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="/logout">
+										<i class="fa fa-power-off me-1 ms-1"></i>
+										Logout</a>
+									<div class="dropdown-divider"></div>
+									<div class="ps-4 p-10">
+										<a href="javascript:void(0)" class="btn btn-sm btn-success btn-rounded text-white">View Profile</a>
+									</div>
+								</ul>
+							</li>
+							<!-- ============================================================== -->
+						<!-- User profile and search -->
+							<!-- ============================================================== -->
+						</ul>
+					</div>
+				</nav>
+			</header>
       <!-- ============================================================== -->
       <!-- End Topbar header -->
       <!-- ============================================================== -->
       <!-- ============================================================== -->
       <!-- Left Sidebar - style you can find in sidebar.scss  -->
       <!-- ============================================================== -->
-      <aside class="left-sidebar" data-sidebarbg="skin5">
+    <aside class="left-sidebar" data-sidebarbg="skin5">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
           <!-- Sidebar navigation-->
@@ -547,7 +341,7 @@
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/Dashboard"
                   aria-expanded="false"
-                  ><i class="mdi mdi-view-dashboard"></i
+                  ><i class="mdi mdi-dialpad"></i
                   ><span class="hide-menu">Dashboard</span></a
                 >
               </li>
@@ -556,7 +350,7 @@
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/messages/"
                   aria-expanded="false"
-                  ><i class="mdi mdi-chart-bar"></i
+                  ><i class="mdi mdi-comment-processing"></i
                   ><span class="hide-menu">Message</span></a
                 >
               </li>
@@ -565,7 +359,7 @@
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/task/"
                   aria-expanded="false"
-                  ><i class="mdi mdi-chart-bubble"></i
+                  ><i class="mdi mdi-playlist-check"></i
                   ><span class="hide-menu">Task</span></a
                 >
               </li>
@@ -574,7 +368,7 @@
                   class="sidebar-link waves-effect waves-dark sidebar-link"
                   href="/infrastructure/"
                   aria-expanded="false"
-                  ><i class="mdi mdi-border-inside"></i
+                  ><i class="mdi mdi-slack"></i
                   ><span class="hide-menu">Asset</span></a
                 >
               </li>
@@ -592,26 +386,32 @@
                   class="sidebar-link has-arrow waves-effect waves-dark"
                   href="javascript:void(0)"
                   aria-expanded="false"
-                  ><i class="mdi mdi-receipt"></i
+                  ><i class="mdi mdi-city"></i
                   ><span class="hide-menu">Building</span></a
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                 <li class="sidebar-item">
                     <a href="/building/" class="sidebar-link"
-                      ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu"> Building</span></a
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Building</span></a
                     >
                   </li>
                   <li class="sidebar-item">
                     <a href="/office/" class="sidebar-link"
-                      ><i class="mdi mdi-note-outline"></i
-                      ><span class="hide-menu"> Office</span></a
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Office</span></a
                     >
                   </li>
                   <li class="sidebar-item">
                     <a href="/classroom/" class="sidebar-link"
-                      ><i class="mdi mdi-note-plus"></i
-                      ><span class="hide-menu"> Classroom</span></a
+                      >
+                      {# <i class="mdi mdi-note-plus"></i
+                      > #}
+                      <span class="hide-menu"> Classroom</span></a
                     >
                   </li>
                 </ul>
@@ -630,139 +430,41 @@
                   class="sidebar-link has-arrow waves-effect waves-dark"
                   href="javascript:void(0)"
                   aria-expanded="false"
-                  ><i class="mdi mdi-face"></i
-                  ><span class="hide-menu">User</span></a
+                  >
+                  <i class="mdi mdi-account"></i
+                  >
+                  <span class="hide-menu">User</span></a
                 >
                 <ul aria-expanded="false" class="collapse first-level">
                   <li class="#">
-                    <a href="icon-material.html" class="sidebar-link"
-                      ><i class="mdi mdi-emoticon"></i
-                      ><span class="hide-menu"> Staff</span></a
+                    <a href="" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-account-location"></i
+                      > #}
+                      <span class="hide-menu"> Staff</span></a
                     >
                   </li>
                   <li class="sidebar-item">
                     <a href="/technician/" class="sidebar-link"
-                      ><i class="mdi mdi-emoticon-cool"></i
-                      ><span class="hide-menu"> Technician</span></a
+                      >
+                      {# <i class="mdi mdi-account-location"></i
+                      > #}
+                      <span class="hide-menu"> Technician</span></a
                     >
                   </li>
                    <li class="sidebar-item">
                     <a href="/users" class="sidebar-link"
-                      ><i class="mdi mdi-emoticon-cool"></i
-                      ><span class="hide-menu"> Student</span></a
+                      >
+                      {# <
+                      i class="mdi mdi-account-location"></
+                      > #}
+                      <span class="hide-menu"> Student</span></a
                     >
                   </li>
                 </ul>
               </li>
-              {# <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="pages-elements.html"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-pencil"></i
-                  ><span class="hide-menu">Elements</span></a
-                >
-              </li> #}
-              {# <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-move-resize-variant"></i
-                  ><span class="hide-menu">Addons </span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="index2.html" class="sidebar-link"
-                      ><i class="mdi mdi-view-dashboard"></i
-                      ><span class="hide-menu"> Dashboard-2 </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="pages-gallery.html" class="sidebar-link"
-                      ><i class="mdi mdi-multiplication-box"></i
-                      ><span class="hide-menu"> Gallery </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="pages-calendar.html" class="sidebar-link"
-                      ><i class="mdi mdi-calendar-check"></i
-                      ><span class="hide-menu"> Calendar </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="pages-invoice.html" class="sidebar-link"
-                      ><i class="mdi mdi-bulletin-board"></i
-                      ><span class="hide-menu"> Invoice </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="pages-chat.html" class="sidebar-link"
-                      ><i class="mdi mdi-message-outline"></i
-                      ><span class="hide-menu"> Chat Option </span></a
-                    >
-                  </li>
-                </ul>
-              </li> #}
-              {# <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-account-key"></i
-                  ><span class="hide-menu">Authentication </span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="authentication-login.html" class="sidebar-link"
-                      ><i class="mdi mdi-all-inclusive"></i
-                      ><span class="hide-menu"> Login </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="authentication-register.html" class="sidebar-link"
-                      ><i class="mdi mdi-all-inclusive"></i
-                      ><span class="hide-menu"> Register </span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-alert"></i
-                  ><span class="hide-menu">Errors </span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="sidebar-item">
-                    <a href="error-403.html" class="sidebar-link"
-                      ><i class="mdi mdi-alert-octagon"></i
-                      ><span class="hide-menu"> Error 403 </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="error-404.html" class="sidebar-link"
-                      ><i class="mdi mdi-alert-octagon"></i
-                      ><span class="hide-menu"> Error 404 </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="error-405.html" class="sidebar-link"
-                      ><i class="mdi mdi-alert-octagon"></i
-                      ><span class="hide-menu"> Error 405 </span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="error-500.html" class="sidebar-link"
-                      ><i class="mdi mdi-alert-octagon"></i
-                      ><span class="hide-menu"> Error 500 </span></a
-                    >
-                  </li>
-                </ul>
-              </li> #}
-              <li class="sidebar-item p-3">
+            
+              {# <li class="sidebar-item p-3">
                 <a
                   href="https://github.com/wrappixel/matrix-admin-bt5"
                   target="_blank"
@@ -776,7 +478,7 @@
                   ><i class="mdi mdi-cloud-download font-20 me-2"></i>Download
                   Free</a
                 >
-              </li>
+              </li> #}
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -796,7 +498,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">STUDENT</h4>
+              <h4 class="page-title">Tables</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -816,65 +518,95 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-       <div class="YRrCJSr_j5nopfm4duUc e8VqoQNK0mbkRFDL3LMV">
-    <div class="_IebywwKB6L2zG0BTy63">
-        <div class="VPGGthdu3cy_ZP7AL7dt TK9h2c2b79uBgR_cJzCE u0Aizb1ol0gBXDISYKJM">
-            <div class="wBVMFkIGfrKshbvi2gS1 mngKhi_Rv06PF57lblDI">
-                <table class="TK9h2c2b79uBgR_cJzCE Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb tE23eyc5jfeQpiPRybcw">
-                   {% for user in app_users %}
-                    <tbody class="_Ybd3WwuTVljUT4vEaM3 Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb _1jTZ8KXRZul60S6czNi XpuPpk9eXhVCrleKmXDr">
-                        
-                        <tr class="SA5DoMHfwOFtY4h_qzuM _7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX" >
-                            <td class="E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf">
-                                <div class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 d4louhNic5PFgJGRKqn6">
-                                    <div>
-                                        <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" class="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP" onclick="event.stopPropagation();">
-                                        <label for="checkbox-1" class="_DVAfiyo21kM68EUVzEQ">checkbox</label>
-                                    </div>
-                                    <svg onclick="event.stopPropagation();" class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr PeR2JZ9BZHYIH8Ea3F36 lVdPby_geDbl2zZm5HXn XIIs8ZOri3wm8Wnj9N_y XnOFrrg_oAfYnE6_iOPb" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                                </div>
-                            </td>
-                            <td class="YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf d4louhNic5PFgJGRKqn6 BHrWGjM1Iab_fAz0_91H">
-                                <img class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr RpVwy4sO7Asb86CncKJ_" src="https://img.icons8.com/?size=1x&id=40323&format=png" alt="Neil Sims">
-                                <div class="d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE">{{ user.firstName }}</div>
-                            </td>
-                            <td class="_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE ZhzOGpbwY0R4TKKYr5pG SwT7Kd2nq4AegrA_rbqO EaxKPe33bBy_Ky6mzblq vfNYjqjYMlN1XskEucCt wBVMFkIGfrKshbvi2gS1"> {{ user.email }}</td>
-                            <td class="_wYiJGbRZyFZeCc8y7Sf BHrWGjM1Iab_fAz0_91H d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE"> {{ user.registrationNo }}</td>
+        <div class="container-fluid">
+          <!-- ============================================================== -->
+          <!-- Start Page Content -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-12">
+             
+             
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Students Data</h5>
+                  <div class="table-responsive">
+                    <table
+                      id="zero_config"
+                      class="table table-striped table-bordered"
+                    >
+                     <thead>
+            <tr>
+                {# <th>Id</th> #}
+                <th>Name</th> 
+                {# <th>RoleName</th> #}
+                <th>Registration</th>
+                <th>Email</th>
+                {# <th>Role</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
 
-                            <td class="_wYiJGbRZyFZeCc8y7Sf EU43bH15DCmsqkGyVBGj BHrWGjM1Iab_fAz0_91H">
-                               <a href="/users/edit/{id}">
-                                <button type="button" data-modal-toggle="user-modal" class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
-                                    <svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg>
-                                  Edit user
-                                </button>
+        {% for user in app_users %}
+            <tr>
+              {# ?  <td>{{ role.id }}</td> #}
+                <td>{{ user.firstName }}</td>
+                 {# <td>{{ role.roleName }}</td> #}
+                <td>{{ user.registrationNo }}</td>
+                <td>{{ user.email }}</td>
+                {# <td>{{ user.role }}</td> #}
+
+               
+                          <td>
+
+                         
+                          <a
+                                       href="/users/edit/{id}"
+                                        class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+                                    show
                                 </a>
-
-                                <a href="/users/delete/{id}">
-                                <button type="button" data-modal-toggle="delete-user-modal" class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 SdPDrbResNmgnA0L4Iki mveJTCIb2WII7J4sY22F _hwGprpWFg861uOaLs98 _dylIDxYTN3qgvD4U597 wGCv_lBIef6dPW_LgqPQ g0psQAXAFirvUBcDyMSb">
-                                    <svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
-                                  Delete user
-                                </button>
+                                <a
+                                        href=""
+                                        class="bg-red-500 font-bold py-2 px-4 rounded transition-all hover:bg-red-300">
+                                    delete
                                 </a>
-                                    
-                            </td>
-
+                               
+                          </td>
+                          {# <td>$320,800</td> #}
                         </tr>
-                        <!-- Unread -->
-                        
-                        
-                      {# dynamic symfony table #}
-                       
-                      {# end #}
-
-                        
-                        
-                    </tbody>
-                    {% endfor %}
-                </table>
+                       {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                      <tfoot>
+                        {# <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Start date</th>
+                          <th>Salary</th>
+                        </tr> #}
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
             </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- End PAge Content -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Right sidebar -->
+          <!-- ============================================================== -->
+          <!-- .right-sidebar -->
+          <!-- ============================================================== -->
+          <!-- End Right sidebar -->
+          <!-- ============================================================== -->
         </div>
-    </div>
-</div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
@@ -882,8 +614,8 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-          All Rights Reserved by Ardhi University. Designed and Developed by
-          <a href="">Ardhi university student</a>.
+          All Rights Reserved by Matrix-admin. Designed and Developed by
+          <a href="https://www.wrappixel.com">WrapPixel</a>.
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -921,19 +653,5 @@
        ****************************************/
       $("#zero_config").DataTable();
     </script>
-
-    {# flowable template scripts #}
-        <script src="https://flowbite.com/application-ui/demo/app.bundle.js"></script>
-
-    {# end #}
   </body>
 </html>
-
-
-
-
-
-
-
-
-{# end #}

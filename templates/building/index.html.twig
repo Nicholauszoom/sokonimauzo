@@ -643,7 +643,7 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-       <div class="YRrCJSr_j5nopfm4duUc e8VqoQNK0mbkRFDL3LMV">
+       {# <div class="YRrCJSr_j5nopfm4duUc e8VqoQNK0mbkRFDL3LMV">
     <div class="_IebywwKB6L2zG0BTy63">
         <div class="VPGGthdu3cy_ZP7AL7dt TK9h2c2b79uBgR_cJzCE u0Aizb1ol0gBXDISYKJM">
             <div class="wBVMFkIGfrKshbvi2gS1 mngKhi_Rv06PF57lblDI">
@@ -694,14 +694,129 @@
                       {# end #}
 
                         
-                        
+{#                         
                     </tbody>
                     {% endfor %}
                 </table>
             </div>
         </div>
     </div>
-</div>
+</div> #}
+
+
+
+
+
+ <div class="container-fluid">
+          <!-- ============================================================== -->
+          <!-- Start Page Content -->
+          <!-- ============================================================== -->
+          <div class="row">
+            <div class="col-12">
+             
+             
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Students Data</h5>
+                  <div class="table-responsive">
+                    <table
+                      id="zero_config"
+                      class="table table-striped table-bordered"
+                    >
+                     <thead>
+
+                   
+            <tr>
+                {# <th>Id</th> #}
+                <th>Name</th> 
+                {# <th>RoleName</th> #}
+                <th>Description</th>
+                 <th>Code</th>
+                {# <th>Role</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+         {% for building in buildings %}
+            <tr>
+              {# ?  <td>{{ role.id }}</td> #}
+                <td>{{ building.name }}</td>
+                 {# <td>{{ role.roleName }}</td> #}
+                <td>{{ building.description }}</td>
+                <td>{{ building.code}}</td>
+                {# <td>{{ user.role }}</td> #}
+
+               
+                          <td>
+
+                         
+                          <a
+                                      href="/building/edit/{{ building.id }}"
+                                        class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
+                                    edit
+                                </a>
+                                <a href="/building/delete/{{ building.id }}">
+                                   Delete
+
+                                </a>
+                               
+                          </td>
+                          {# <td>$320,800</td> #}
+                        </tr>
+                       {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                      </tbody>
+                      {% endfor %}
+                      <tfoot>
+                        {# <tr>
+                          <th>Name</th>
+                          <th>Position</th>
+                          <th>Office</th>
+                          <th>Age</th>
+                          <th>Start date</th>
+                          <th>Salary</th>
+                        </tr> #}
+                      </tfoot>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <canvas id="taskChart"></canvas>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        var ctx = document.getElementById('taskChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: {{ labels|json_encode|raw }},
+                datasets: [{
+                    label: 'Tasks with Status 1',
+                    data: {{ data|json_encode|raw }},
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->

@@ -62,6 +62,9 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
     #[ORM\OneToMany(mappedBy: 'no', targetEntity: Participant::class)]
     private Collection $participant;
 
+    #[ORM\ManyToMany(targetEntity: Roles::class, inversedBy: 'users')]
+    private Collection $role;
+
     // #[ORM\OneToMany(mappedBy: 'user', targetEntity: Chart::class)]
     // private Collection $messages;
 
@@ -71,6 +74,7 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
         $this->buildings = new ArrayCollection();
         // $this->messages = new ArrayCollection();
         $this->participant = new ArrayCollection();
+        $this->role = new ArrayCollection();
     }
 
     #[ORM\OneToOne(inversedBy: 'user', cascade: ['persist', 'remove'])]
@@ -302,4 +306,28 @@ const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
 
     //     return $this;
     // }
+
+    /**
+     * @return Collection<int, Roles>
+     */
+    public function getRole(): Collection
+    {
+        return $this->role;
+    }
+
+    public function addRole(Roles $role): self
+    {
+        if (!$this->role->contains($role)) {
+            $this->role->add($role);
+        }
+
+        return $this;
+    }
+
+    public function removeRole(Roles $role): self
+    {
+        $this->role->removeElement($role);
+
+        return $this;
+    }
 }

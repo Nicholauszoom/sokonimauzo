@@ -52,6 +52,7 @@ class RegistrationFormType extends AbstractType
             ],
         ])
 
+
         ->add('registrationNo', TextType::class, [
             'label' => false,
             'attr' => [
@@ -94,6 +95,24 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+           
+            ->add('role', EntityType::class, [
+
+                // looks for choices from this entity
+                'class' => Roles::class,
+                'multiple' => true,
+                'expanded' => true,
+                // uses the User.username property as the visible option string
+                // 'choice_label' => 'name',
+                'choice_label' => function ($role) {
+                    return $role;
+
+                }
+                // used to render a select box, check boxes or radios
+                
+                // 'expanded' => true,
+    
             ])
 
 

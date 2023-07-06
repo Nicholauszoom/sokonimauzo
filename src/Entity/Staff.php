@@ -2,26 +2,25 @@
 
 namespace App\Entity;
 
-use App\Repository\AdminRepository;
+use App\Repository\StaffRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 
-#[ORM\Entity(repositoryClass: AdminRepository::class)]
+#[ORM\Entity(repositoryClass: StaffRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 
-class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
+class Staff implements UserInterface, PasswordAuthenticatedUserInterface
 {
 
 
     const ROLE_ADMIN ='ROLE_ADMIN';
 
-    const ROLE_TECHNICIAN ='ROLE_TECHNICIAN';
-
-
-
+    const ROLE_STAFF ='ROLE_STAFF';
+    
 
 
     #[ORM\Id]
@@ -34,14 +33,15 @@ class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
-/**
+
+     /**
      * @var string The hashed password
      */
     #[ORM\Column]
     private ?string $password = null;
 
     #[ORM\Column]
-    private array $roles = ['ROLE_ADMIN'];
+    private array $roles = ['ROLE_STAFF'];
 
     public function getId(): ?int
     {
@@ -72,21 +72,10 @@ class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
         return $this;
     }
 
-     /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
-
-
-    /**
+   /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->password;
     }
@@ -99,7 +88,17 @@ class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
     }
 
 
-     /**
+ /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+ /**
      * @see UserInterface
      */
     public function eraseCredentials()
@@ -108,10 +107,15 @@ class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
+
+ /**
+     * @see UserInterface
+     */
     public function getRoles(): array
     {
        
-        return ['ROLE_ADMIN'];
+
+        return ['ROLE_STAFF'];
     }
 
     public function setRoles(array $roles): self
@@ -123,15 +127,18 @@ class Admin implements UserInterface ,PasswordAuthenticatedUserInterface
 
 
 
-
     public function isAdmin():bool
     {
        return in_array(self::ROLE_ADMIN,$this->getRoles());
     }
 
 
-    public function isTechnician():bool
+    // public function isTechnician():bool
+    // {
+    //    return in_array(self::ROLE_TECHNICIAN,$this->getRoles());
+    // }
+    public function isStaff():bool
     {
-       return in_array(self::ROLE_TECHNICIAN,$this->getRoles());
+       return in_array(self::ROLE_STAFF,$this->getRoles());
     }
 }
