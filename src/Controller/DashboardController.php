@@ -24,7 +24,7 @@ class DashboardController extends AbstractController
 
 
      #[Route('/Dashboard', methods:['GET'], name: 'a_dashb')]
-    public function getAdmnDash(TaskRepository $taskRepository){
+    public function getAdmnDash(TaskRepository $taskRepository,MessagesRepository $messagesRepository){
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         
 
@@ -74,6 +74,7 @@ class DashboardController extends AbstractController
             'success' => $total_success, 
             'fail' => $total_fail,
             'total' => $total_task, 
+            'messagestotal'=>$messagesRepository->findAll(),
         ]);
     }
 

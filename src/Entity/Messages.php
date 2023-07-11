@@ -7,6 +7,8 @@ use App\Repository\MessagesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bundle\SecurityBundle\Security;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 #[ORM\Entity(repositoryClass: MessagesRepository::class)]
 class Messages
@@ -57,6 +59,10 @@ class Messages
 
     #[ORM\ManyToOne]
     private ?Officess $office = null;
+
+    #[ORM\Column]
+    #[Gedmo\Timestampable(on:'create')]
+    private ?\DateTimeImmutable $createdAt = null;
 
   
 
@@ -204,6 +210,18 @@ class Messages
     public function setOffice(?Officess $office): self
     {
         $this->office = $office;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

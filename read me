@@ -1,4 +1,4 @@
-# .ENV FILE 
+<!-- .ENV FILE 
 # In all environments, the following files are loaded if they exist,
 # the latter taking precedence over the former:
 #
@@ -37,4 +37,4 @@ DATABASE_URL="mysql://root:@127.0.0.1:3306/dissertation?serverVersion=mariadb-10
 # MAILER_DSN=smtp://4a047cad22bdf1:cc1b8a3f7c7d6a@smtp.mailtrap.io:2525
 # MAILER_DSN=smtp://nicholaussomi5:rjxfmhmlcwzrdmhi@smtp.gmail.io:2525
 MAILER_DSN=smtp://nicholaussomi5:rjxfmhmlcwzrdmhi@smtp.gmail.com:587?encryption=tls&auth_mode=login
-###< symfony/mailer ###
+###< symfony/mailer ### -->

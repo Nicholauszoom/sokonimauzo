@@ -6,6 +6,7 @@ use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Dompdf\Dompdf;
 // use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Command\Command;
@@ -233,28 +234,70 @@ public function editTaskStatusAction(Request $request, $id)
 
 //     return Command::SUCCESS;
 // }
- 
 
 
+// #[Route('/report', name: 'app_task_REPORT', methods: ['GET'])]
+// public function generateTaskReportAction(Dompdf $dompdf ,TaskRepository $taskRepository): Response
+// {
+//     // Get tasks from the database
+//     // $tasks = $this->$taskRepository->findAll();
 
+//     // Render the report template using Twig
+//     $html = $this->renderView('task_report.html.twig', [
+//         'report' => $taskRepository->findAll(),
+//     ]);
 
- 
-//      #[Route('/chart', name: 'app_task_chart')]
-//     public function create_bar_chart(TaskRepository $taskRepository): Response
-//     {
-//         $tasks = $taskRepository->getTaskCountsByMonth();
+//     // Load HTML into dompdf
+//     $dompdf->loadHtml($html);
 
-//         $labels = [];
-//         $data = [];
+//     // Set paper size and orientation
+//     $dompdf->setPaper('A4', 'portrait');
 
-//         foreach ($tasks as $task) {
-//             $labels[] = $task['year'] . '-' . $task['month'];
-//             $data[] = $task['task_count'];
-//         }
+//     // Render PDF file
+//     $dompdf->render();
 
-//         return $this->render('chart/index.html.twig', [
-//             'labels' => $labels,
-//             'data' => $data,
-//         ]);
+//     // Output PDF file to browser
+//     $pdf = $dompdf->output();
+
+//     return new Response($pdf, 200, [
+//         'Content-Type' => 'application/pdf',
+//         'Content-Disposition' => 'inline; filename="task_report.pdf"',
+//     ]);
 // }
+
+
+
+#[Route('/report', name: 'app_task_report', methods: ['GET'])]
+public function getReport(Dompdf $dompdf ,TaskRepository $taskRepository): Response
+{
+
+
+
+    // $task->
+       $html = $this->renderView('task_report.html.twig', [
+            'report' => $taskRepository->findAll(),
+    ]);
+
+    // Load HTML into dompdf
+       $dompdf->loadHtml($html);
+
+    // Set paper size and orientation
+       $dompdf->setPaper('A4', 'portrait');
+
+    // Render PDF file
+       $dompdf->render();
+
+    // Output PDF file to browser
+       $pdf = $dompdf->output();
+
+
+    
+   return new Response($pdf, 200, [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="task_report.pdf"',
+    ]);
+}
+
+
+     
 }

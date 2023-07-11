@@ -444,6 +444,19 @@
           <!-- Sales Cards  -->
           <!-- ============================================================== -->
       <div class="row">
+
+	              <!-- Column -->
+            <div class="col-md-6 col-lg-4 col-xlg-3">
+              <div class="card card-hover">
+                <div class="box bg-cyan text-center">
+                  <h1 class="font-light text-white">
+                    <i class="mdi mdi-hangouts"></i>
+                  </h1>
+                  <h6 class="text-white">Messages Created</h6>
+				  <h3 class="text-white">{{messagestotal|length}}</h3>
+                </div>
+              </div>
+            </div>
             <!-- Column -->
             <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
@@ -469,7 +482,7 @@
               </div>
             </div>
             <!-- Column -->
-            <div class="col-md-6 col-lg-2 col-xlg-3">
+            {# <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-warning text-center">
                   <h1 class="font-light text-white">
@@ -478,9 +491,9 @@
                   <h6 class="text-white">Task On Draft</h6>
                 </div>
               </div>
-            </div>
+            </div> #}
             <!-- Column -->
-            <div class="col-md-6 col-lg-4 col-xlg-3">
+            <div class="col-md-6 col-lg-2 col-xlg-3">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
                   <h1 class="font-light text-white">
@@ -507,7 +520,7 @@
           </div>
 		  {# BEGINING OF THE SCRIPT FOR ANALYSIS OF TTHE SUCCESS TASKS #}
 		  <center>
-<h1>Analysis of the <span style="color:#0095b6">Sucess</span> tasks per Monthly and Annually </h1></center>
+<h1><span style="color:#0095b6">Sucess tasks per Month and Year </span></h1></center>
 
     <canvas id="taskChart"></canvas>
 
@@ -520,7 +533,7 @@
             data: {
                 labels: {{ labels|json_encode|raw }},
                 datasets: [{
-                    label: 'Tasks with Status 1',
+                    label: 'Tasks success',
                     data: {{ data|json_encode|raw }},
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',
@@ -543,7 +556,7 @@
 
 	 {# BEGINING OF THE SCRIPT FOR ANALYSIS OF TTHE FAILED TASKS #}
   <center>
-<h1>Analysis of the <span style="color:#cb4154">Failed</span> tasks per Monthly and Annually </h1></center>
+<h1> <span style="color:#0095b6">Failed tasks per Month and Year </span></h1></center>
 
     <canvas id="taskCharts"></canvas>
 
@@ -556,7 +569,7 @@
             data: {
                 labels: {{ flabels|json_encode|raw }},
                 datasets: [{
-                    label: 'Tasks with Status 0',
+                    label: 'failed Tasks',
                     data: {{ fdata|json_encode|raw }},
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',

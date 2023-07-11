@@ -158,7 +158,7 @@ class TaskRepository extends ServiceEntityRepository
     public function totalSuccesTask()
     {
         $qb = $this->createQueryBuilder('t');
-        $qb->select('COUNT(t.id) AS total_success')
+        $qb->select('t.id AS total_success')
            ->where('t.status = :status')
            ->setParameter('status', 1);
           
@@ -171,7 +171,7 @@ class TaskRepository extends ServiceEntityRepository
     public function totalFailedTask()
     {
         $qb = $this->createQueryBuilder('t');
-        $qb->select('COUNT(t.id) AS total_fail')
+        $qb->select('t.id AS total_fail')
            ->where('t.status = :status')
            ->setParameter('status', 0);
            

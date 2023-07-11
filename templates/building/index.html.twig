@@ -787,35 +787,7 @@
             </div>
           </div>
 
-            <canvas id="taskChart"></canvas>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        var ctx = document.getElementById('taskChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: {{ labels|json_encode|raw }},
-                datasets: [{
-                    label: 'Tasks with Status 1',
-                    data: {{ data|json_encode|raw }},
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+          
 
         <!-- ============================================================== -->
         <!-- End Container fluid  -->

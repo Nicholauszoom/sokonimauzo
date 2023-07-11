@@ -4,4 +4,7 @@ controllers:
         namespace: App\Controller
     type: attribute
 # app_location:
+task_report:
+    path: /task/report
+    controller: App\Controller\TaskController::generateTaskReportAction
     

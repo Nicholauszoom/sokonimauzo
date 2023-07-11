@@ -1,95 +1,23 @@
+{# {% extends 'base.html.twig' %}
 
-
-
-{# {% extends 'base2.html.twig' %}
-
-{% block title %}Messages index{% endblock %}
+{% block title %}New Progress{% endblock %}
 
 {% block body %}
+    <h1>Create new Progress</h1>
 
-    <main class="flex-1 flex bg-gray-50 mx-auto w-full">
-        <section class="bg-gray-50 dark:bg-gray-50  w-full">
-            <div class="mx-auto w-4/5 my-8">
-                {# <h1 class="text-6xl pt-12 pb-8">
-                Recent Posts ({{ messages|length }})
-            </h1> #}
-                {# <a
-                        href="{{ path('app_messages_new') }}"
-                        class="uppercase border border-gray-500 text-lg py-4 px-6 rounded transition transition-all bg-gray-800 text-white hover:bg-white hover:text-gray-800">
-                    Create New
-                </a>
-            </div>
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg ">
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Id
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Title
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Description
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Deliverd At
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
+    {{ include('progress/_form.html.twig') }}
 
-                    </tr>
-                    </thead>
-                    {% for message in messages %}
-                        <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ message.id }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ message.title }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ message.description }}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <a
-                                        href="{{ path('app_messages_show', {'id': message.id}) }}"
-                                        class="bg-green-500 font-bold py-2 px-4 rounded transition-all hover:bg-green-300">
-                                    show
-                                </a>
-                                <a
-                                        href="{{ path('app_messages_edit', {'id': message.id}) }}"
-                                        class="bg-red-500 font-bold py-2 px-4 rounded transition-all hover:bg-red-300">
-                                    edit
-                                </a>
-                            </td>
+    <a href="{{ path('app_progress_index') }}">back to list</a>
+{% endblock %} #}
 
-                        </tr>
-                    {% else %}
-                        <tr>
-                            <td colspan="5">no records found</td>
-                        </tr>
 
-                        </tbody>
-                    {% endfor %}
-                </table>
-
-            </div>
-        </section> #}
-    {# </main>
-{% endblock %}  #}
 
 
 
 
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-   <head>
+  <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Tell the browser to be responsive to screen width -->
@@ -102,63 +30,6 @@
       name="description"
       content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework"
     />
-
-
-        {# flowable template head --start #}
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://flowbite.com/application-ui/demo/app.css">
-<link rel="apple-touch-icon" sizes="180x180" href="https://flowbite.com/application-ui/demo/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://flowbite.com/application-ui/demo/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://flowbite.com/application-ui/demo/favicon-16x16.png">
-<link rel="icon" type="image/png" href="https://flowbite.com/application-ui/demo/favicon.ico">
-<link rel="manifest" href="https://flowbite.com/application-ui/demo/site.webmanifest">
-<link rel="mask-icon" href="https://flowbite.com/application-ui/demo/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
-<!-- Twitter -->
-{# <meta name="twitter:card" content="summary">
-<meta name="twitter:site" content="@">
-<meta name="twitter:creator" content="@">
-<meta name="twitter:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
-<meta name="twitter:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
-<meta name="twitter:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg"> #}
-
-<!-- Facebook -->
-<meta property="og:url" content="https://flowbite.com/application-ui/demo/mailing/inbox/">
-<meta property="og:title" content="Tailwind CSS Mailing Inbox Page - Flowbite">
-<meta property="og:description" content="Get started with a premium admin dashboard layout built with Tailwind CSS and Flowbite featuring 21 example pages including charts, kanban board, mailing system, and more.">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://flowbite.com/application-ui/demo/images/og-image.jpg">
-<meta property="og:image:type" content="image/png">
-
-
-
-
-
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-141734189-9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-141734189-9');
-</script>
-
-
-<script>
-    
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('v2fLMH8w3xgUEQcl63H9');
-    } else {
-        document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
-    }
-</script>
-
-        {# end #}
-
-
     <meta name="robots" content="noindex,nofollow" />
     <title></title>
     <!-- Favicon icon -->
@@ -169,8 +40,11 @@
       href="../asset/images/"
     />
     <!-- Custom CSS -->
-    <link href="../asset/libs/flot/css/float-chart.css" rel="stylesheet" />
-    <!-- Custom CSS -->
+    <link
+      href="../asset/libs/jquery-steps/jquery.steps.css"
+      rel="stylesheet"
+    />
+    <link href="../asset/libs/jquery-steps/steps.css" rel="stylesheet" />
     <link href="../dist/css/style.min.css" rel="stylesheet" />
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -178,8 +52,6 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    
   </head>
 
   <body>
@@ -207,12 +79,49 @@
       <!-- ============================================================== -->
       <!-- Topbar header - style you can find in pages.scss -->
       <!-- ============================================================== -->
-  	  <header class="topbar" data-navbarbg="skin5"> <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+       	<header class="topbar" data-navbarbg="skin5"> <nav class="navbar top-navbar navbar-expand-md navbar-dark">
 					<div class="navbar-header" data-logobg="skin5">
 						<!-- ============================================================== -->
 						<!-- Logo -->
 						<!-- ============================================================== -->
-					
+							<a
+							class="navbar-brand" href="index.html"> <!-- Logo icon -->
+							<b class="chat-img">
+								<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+								<!-- Dark Logo icon -->
+									<a class="
+										                    nav-link
+										                    dropdown-toggle
+										                    text-muted
+										                    waves-effect waves-dark
+										                    pro-pic
+										                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../asset/images/users/user-100.png" alt="user" class="rounded-circle" width="31"/>
+									{{app.user.email}}
+								</a>
+							</b>
+
+
+							{# <div class="chat-img">
+							                          <img src="../asset/images/users/1.jpg" alt="user" /> 
+							                        </div>
+							                        <div class="chat-content">
+							                          <h6 class="font-medium">{{ app.user.firstName }}</h6> #}
+
+							<!--End Logo icon -->
+							<!-- Logo text -->
+								<span
+								class="logo-text ms-2"> <!-- dark Logo text -->
+								<img src="../asset/images/" alt="" class="light-logo"/>
+							</span>
+							<!-- Logo icon -->
+						<!-- <b class="logo-icon"> -->
+							<!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+							<!-- Dark Logo icon -->
+							<!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+
+							<!-- </b> -->
+							<!--End Logo icon -->
+						</a>
 						<!-- ============================================================== -->
 						<!-- End Logo -->
 						<!-- ============================================================== -->
@@ -236,7 +145,27 @@
 							<!-- ============================================================== -->
 							<!-- create new -->
 							<!-- ============================================================== -->
-								
+								<li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<span class="d-none d-md-block">Back
+										<i class="fa fa-angle-down"></i>
+									</span>
+									<span class="d-block d-md-none">
+										<i class="fa fa-plus"></i>
+									</span>
+								</a>
+								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+									{# <li>
+										<a class="dropdown-item" href="#">Action</a>
+									</li> #}
+									<li>
+										<a class="dropdown-item" href="{{ path('app_progress_index') }}">Back to list</a>
+									</li>
+									<li><hr class="dropdown-divider"/></li>
+									{# <li>
+										<a class="dropdown-item" href="#">Something else here</a>
+									</li> #}
+								</ul>
+							</li>
 							<!-- ============================================================== -->
 							<!-- Search -->
 							<!-- ============================================================== -->
@@ -413,25 +342,22 @@
 					</div>
 				</nav>
 			</header>
-
-    
       <!-- ============================================================== -->
       <!-- End Topbar header -->
       <!-- ============================================================== -->
       <!-- ============================================================== -->
       <!-- Left Sidebar - style you can find in sidebar.scss  -->
       <!-- ============================================================== -->
-     <aside class="left-sidebar" data-sidebarbg="skin5">
+      <aside class="left-sidebar" data-sidebarbg="skin5">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
           <!-- Sidebar navigation-->
-        
           <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/TechnDashboard"
+                  href="/Dashboard"
                   aria-expanded="false"
                   ><i class="mdi mdi-dialpad"></i
                   ><span class="hide-menu">Dashboard</span></a
@@ -440,22 +366,137 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/task/technician"
+                  href="/messages/"
                   aria-expanded="false"
                   ><i class="mdi mdi-comment-processing"></i
+                  ><span class="hide-menu">Message</span></a
+                >
+              </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="/task/"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-playlist-check"></i
                   ><span class="hide-menu">Task</span></a
                 >
               </li>
-               <li class="sidebar-item">
+              <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="#"
+                  href="/infrastructure/"
                   aria-expanded="false"
-                  ><i class="mdi mdi-timelapse"></i
-                  ><span class="hide-menu">Task Progress</span></a>
+                  ><i class="mdi mdi-slack"></i
+                  ><span class="hide-menu">Asset</span></a
+                >
               </li>
-           
-             
+              {# <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="grid.html"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-blur-linear"></i
+                  ><span class="hide-menu">Full Width</span></a
+                >
+              </li> #}
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-city"></i
+                  ><span class="hide-menu">Building</span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                    <a href="/building/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Building</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/office/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Office</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/classroom/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-plus"></i
+                      > #}
+                      <span class="hide-menu"> Classroom</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+              {# <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="pages-buttons.html"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-relative-scale"></i
+                  ><span class="hide-menu">Buttons</span></a
+                >
+              </li> #}
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  >
+                  <i class="mdi mdi-account"></i
+                  >
+                  <span class="hide-menu">User</span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                  <li class="#">
+                    <a href="" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-account-location"></i
+                      > #}
+                      <span class="hide-menu"> Staff</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/technician/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-account-location"></i
+                      > #}
+                      <span class="hide-menu"> Technician</span></a
+                    >
+                  </li>
+                   <li class="sidebar-item">
+                    <a href="/users" class="sidebar-link"
+                      >
+                      {# <
+                      i class="mdi mdi-account-location"></
+                      > #}
+                      <span class="hide-menu"> Student</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+            
+              {# <li class="sidebar-item p-3">
+                <a
+                  href="https://github.com/wrappixel/matrix-admin-bt5"
+                  target="_blank"
+                  class="
+                    w-100
+                    btn btn-cyan
+                    d-flex
+                    align-items-center
+                    text-white
+                  "
+                  ><i class="mdi mdi-cloud-download font-20 me-2"></i>Download
+                  Free</a
+                >
+              </li> #}
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -475,7 +516,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">LIST OF TASKS</h4>
+              <h4 class="page-title">Create New Task</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -495,58 +536,37 @@
         <!-- ============================================================== -->
         <!-- Container fluid  -->
         <!-- ============================================================== -->
-       <div class="YRrCJSr_j5nopfm4duUc e8VqoQNK0mbkRFDL3LMV">
-    <div class="_IebywwKB6L2zG0BTy63">
-        <div class="VPGGthdu3cy_ZP7AL7dt TK9h2c2b79uBgR_cJzCE u0Aizb1ol0gBXDISYKJM">
-            <div class="wBVMFkIGfrKshbvi2gS1 mngKhi_Rv06PF57lblDI">
-                <table class="TK9h2c2b79uBgR_cJzCE Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb tE23eyc5jfeQpiPRybcw">
-                
-                 {% for task in tasks %}
-                    <tbody class="_Ybd3WwuTVljUT4vEaM3 Zy1Pypi71Xu6guex6urN NIAblPiyeuYQ0zW671xb _1jTZ8KXRZul60S6czNi XpuPpk9eXhVCrleKmXDr">
-                        
-                        <tr class="SA5DoMHfwOFtY4h_qzuM _7KA5gD55t2lxf9Jkj20 OPrb_iG5WDy_7F05BDOX" onclick="location.href='';">
-                            <td class="E9GV5sZJIbfO_GEQ_moc _wYiJGbRZyFZeCc8y7Sf">
-                                <div class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 d4louhNic5PFgJGRKqn6">
-                                    <div>
-                                        <input id="checkbox-1" aria-describedby="checkbox-1" type="checkbox" class="E9GV5sZJIbfO_GEQ_moc _o2IXcpM0qnG3JPReKus vpDN1VEJLu5FmLkr5WCk Y3FxyuXtj2gecrGXvLEI jtAJHOc7mn7b4IKRO59D focus:ring-3 KmgKPWh7pHX4ztLneO0T BO8JrKgx4qkHG27c4wVR _GL8_lXmAgroY9ZBWGLH jqg6J89cvxmDiFpnV56r Mmx5lX7HVdrWCgh3EpTP" onclick="event.stopPropagation();">
-                                        <label for="checkbox-1" class="_DVAfiyo21kM68EUVzEQ">checkbox</label>
-                                    </div>
-                                    <svg onclick="event.stopPropagation();" class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr PeR2JZ9BZHYIH8Ea3F36 lVdPby_geDbl2zZm5HXn XIIs8ZOri3wm8Wnj9N_y XnOFrrg_oAfYnE6_iOPb" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                                </div>
-                            </td>
-                            <td class="YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 _wYiJGbRZyFZeCc8y7Sf d4louhNic5PFgJGRKqn6 BHrWGjM1Iab_fAz0_91H">
-                                {# <img class="YIUegm7fh_CpJbivTu6B MnxxlQlR1H0xJuMEE8Yr RpVwy4sO7Asb86CncKJ_" src="" alt="Neil Sims"> #}
-                                <div class="d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE">{{ task.name }}</div>
-                            </td>
-                            <td class="_wYiJGbRZyFZeCc8y7Sf d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE ZhzOGpbwY0R4TKKYr5pG SwT7Kd2nq4AegrA_rbqO EaxKPe33bBy_Ky6mzblq vfNYjqjYMlN1XskEucCt wBVMFkIGfrKshbvi2gS1">{{ task.description }}</td>
-                            
-                            <td class="_wYiJGbRZyFZeCc8y7Sf BHrWGjM1Iab_fAz0_91H d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE">{{ task.techn }}</td>
-                            <td class="_wYiJGbRZyFZeCc8y7Sf BHrWGjM1Iab_fAz0_91H d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE"> 
-                            {% if task.status == 1 %} 
-                         <a href="">   <p type = "button" class="btn btn-success">Success</p> </a>
-                           
-                            {% else %} <a href=""><p type="button" class="btn btn-warning">Pending</p></a>
-                      
-                          {% endif %} 
-                          </td>
-                           <td class="_wYiJGbRZyFZeCc8y7Sf BHrWGjM1Iab_fAz0_91H d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE"> {{ task.startAt ? task.startAt|date('Y-m-d ') : '' }}</td>
+        <div class="container-fluid">
+          <!-- ============================================================== -->
+          <!-- Start Page Content -->
+          <!-- ============================================================== -->
+          <div class="card">
+            <div class="card-body wizard-content">
+              <h4 class="card-title"></h4>
+              <h6 class="card-subtitle"></h6>
+             
+                <div id="example-form">
+                  <h3> Create an Update of task</h3>
+                  <section>
+                     {{ include('progress/_form.html.twig') }}
 
-                           <td class="_wYiJGbRZyFZeCc8y7Sf BHrWGjM1Iab_fAz0_91H d3C8uAdJKNl1jzfE9ynq ezMFUVl744lvw6ht0lFe __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE"> {{ task.endAt ? task.endAt|date('Y-m-d ') : '' }}</td>
-
-                          
-
-                        </tr>
-                       
-                        
-                    </tbody>
-                    {% endfor %}
-
-
-                </table>
+                  </section>
+                  
+                </div>
+           
             </div>
+          </div>
+          <!-- ============================================================== -->
+          <!-- End PAge Content -->
+          <!-- ============================================================== -->
+          <!-- ============================================================== -->
+          <!-- Right sidebar -->
+          <!-- ============================================================== -->
+          <!-- .right-sidebar -->
+          <!-- ============================================================== -->
+          <!-- End Right sidebar -->
+          <!-- ============================================================== -->
         </div>
-    </div>
-</div>
         <!-- ============================================================== -->
         <!-- End Container fluid  -->
         <!-- ============================================================== -->
@@ -554,8 +574,7 @@
         <!-- footer -->
         <!-- ============================================================== -->
         <footer class="footer text-center">
-          All Rights Reserved by Ardhi UNiversity . Designed and Developed by
-          <a href="https://aru.co.tz">Ardhi university student</a>.
+         
         </footer>
         <!-- ============================================================== -->
         <!-- End footer -->
@@ -584,26 +603,37 @@
     <!--Custom JavaScript -->
     <script src="../dist/js/custom.min.js"></script>
     <!-- this page js -->
-    <script src="../asset/extra-libs/multicheck/datatable-checkbox-init.js"></script>
-    <script src="../asset/extra-libs/multicheck/jquery.multicheck.js"></script>
-    <script src="../asset/extra-libs/DataTables/datatables.min.js"></script>
+    <script src="../asset/libs/jquery-steps/build/jquery.steps.min.js"></script>
+    <script src="../asset/libs/jquery-validation/dist/jquery.validate.min.js"></script>
     <script>
-      /****************************************
-       *       Basic Table                   *
-       ****************************************/
-      $("#zero_config").DataTable();
+      // Basic Example with form
+      var form = $("#example-form");
+      form.validate({
+        errorPlacement: function errorPlacement(error, element) {
+          element.before(error);
+        },
+        rules: {
+          confirm: {
+            equalTo: "#password",
+          },
+        },
+      });
+      form.children("div").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex) {
+          form.validate().settings.ignore = ":disabled,:hidden";
+          return form.valid();
+        },
+        onFinishing: function (event, currentIndex) {
+          form.validate().settings.ignore = ":disabled";
+          return form.valid();
+        },
+        onFinished: function (event, currentIndex) {
+          alert("Submitted!");
+        },
+      });
     </script>
-
-    {# flowable template scripts #}
-        <script src="https://flowbite.com/application-ui/demo/app.bundle.js"></script>
-
-    {# end #}
   </body>
 </html>
-
-
-
-
-
-
-
