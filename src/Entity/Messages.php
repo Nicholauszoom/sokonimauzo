@@ -42,8 +42,8 @@ class Messages
     #[ORM\JoinColumn(nullable: false)]
     private ?Building $building = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $time = null;
+    // #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    // private ?\DateTimeInterface $time = null;
 
     #[ORM\ManyToOne(inversedBy: 'messages')]
     #[ORM\JoinColumn(nullable: false)]
@@ -143,17 +143,17 @@ class Messages
         return $this;
     }
 
-    public function getTime(): ?\DateTimeInterface
-    {
-        return $this->time;
-    }
+    // public function getTime(): ?\DateTimeInterface
+    // {
+    //     return $this->time;
+    // }
 
-    public function setTime(\DateTimeInterface $time): self
-    {
-        $this->time = $time;
+    // public function setTime(\DateTimeInterface $time): self
+    // {
+    //     $this->time = $time;
 
-        return $this;
-    }
+    //     return $this;
+    // }
     public function __toString() {
         return $this->title;
     }

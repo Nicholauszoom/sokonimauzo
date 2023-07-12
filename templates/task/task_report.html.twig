@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{# <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -8,25 +8,38 @@
     <h1>Task Report</h1>
     <table>
         <thead>
+             <h1>Task Report</h1>
+
+    <table>
+        <thead>
             <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Due Date</th>
-                <th>Completed</th>
+                <th>Name</th>
+                <th>Time Created</th>
             </tr>
         </thead>
         <tbody>
-         {% for task in report %}
-            <tr>
-                <td>{{ task.id }}</td>
-                <td>{{ task.name }}</td>
-                <td>{{ task.description }}</td>
-                <td>{{ task.start_at|date('d/m/Y') }}</td>
-                <td>{{ task.status ? 'Yes' : 'No' }}</td>
-            </tr>
+            {% for task in task %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.name }}</td>
+                    <td>{{ task.startAt|date('Y-m-d H:i:s') }}</td>
+                </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('task_report_pdf') }}" class="btn btn-primary">Download PDF</a>
+</body>
+</html> #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+</head>
+<body>
+    <h1>Report</h1>
+    <p>This is a sample report.</p>
 </body>
 </html>

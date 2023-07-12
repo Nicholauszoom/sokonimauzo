@@ -397,12 +397,12 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
         <div class="scroll-sidebar">
           <!-- Sidebar navigation-->
         
-          <nav class="sidebar-nav">
+           <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/Dashboard"
+                  href="/TechnDashboard"
                   aria-expanded="false"
                   ><i class="mdi mdi-dialpad"></i
                   ><span class="hide-menu">Dashboard</span></a
@@ -422,6 +422,12 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/messages/message" aria-expanded="false">
 									<i class="mdi mdi-comment-processing"></i>
 									<span class="hide-menu">Message</span>
+								</a>
+							</li>
+               <li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ path('app_progress_index') }}" aria-expanded="false">
+									<i class="mdi mdi-rotate-3d"></i>
+									<span class="hide-menu">Progress</span>
 								</a>
 							</li>
             </ul>
@@ -472,10 +478,11 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 						</div>
 						<div class="t7hrtvgtuIwf8EPNuj2r">
 							<div class="d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl vfNYjqjYMlN1XskEucCt OyABRrnTV_kvHV7dJ0uE">
-								{# {{message.user}} #}
+								{# {{progress.technician}} #}
 							</div>
 							<div class="c8dCx6gnV43hTOLV6ks5 PeR2JZ9BZHYIH8Ea3F36 text-normal XIIs8ZOri3wm8Wnj9N_y">
-								email@flowbite.com
+								{# email@flowbite.com #}
+								{{progress.technician}}
 							</div>
 						</div>
 					</div>
@@ -616,7 +623,7 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 		</div>
 
 <!-- Initialize the map -->
-<script>
+{# <script>
   (function() {
     var map = L.map('map').setView([{{ message.latitude }}, {{ message.longitude }}], 13);
 
@@ -630,7 +637,7 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
         .bindPopup("<b>{{ message.title }}</b><br>{{ message.latitude }}, {{ message.longitude }}");
     
   })();
-</script>
+</script> #}
 
 
 

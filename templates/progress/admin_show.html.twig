@@ -1,3 +1,43 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Progress{% endblock %}
+
+{% block body %}
+    <h1>Progress</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ progress.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ progress.description }}</td>
+            </tr>
+            <tr>
+                <th>ImagePath</th>
+                <td>{{ progress.imagePath }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ progress.createdAt ? progress.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ progress.updatedAt ? progress.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_progress_index') }}">back to list</a>
+
+    <a href="{{ path('app_progress_edit', {'id': progress.id}) }}">edit</a>
+
+    {{ include('progress/_delete_form.html.twig') }}
+{% endblock %}
+ #}
+
 
 
 <!DOCTYPE html>
@@ -124,7 +164,7 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 																				                    waves-effect waves-dark
 																				                    pro-pic
 																				                  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <img src="../asset/images/users/user-100.png" alt="user" class="rounded-circle" width="31"/>
-									{# {{app.user.email}} #}
+									{{app.user.email}}
 								</a>
 							</b>
 
@@ -352,33 +392,127 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 			<!-- ============================================================== -->
 			<!-- Left Sidebar - style you can find in sidebar.scss  -->
 			<!-- ============================================================== -->
-				<aside
-				class="left-sidebar" data-sidebarbg="skin5"> <!-- Sidebar scroll-->
-				<div
-					class="scroll-sidebar">
-					<!-- Sidebar navigation-->
-					<nav class="sidebar-nav">
+				<aside class="left-sidebar" data-sidebarbg="skin5">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+          <!-- Sidebar navigation-->
+        
+         <nav class="sidebar-nav">
 						<ul id="sidebarnav" class="pt-4">
 							<li class="sidebar-item">
-								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/UserDashboard" aria-expanded="false">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/Dashboard" aria-expanded="false">
 									<i class="mdi mdi-dialpad"></i>
 									<span class="hide-menu">Dashboard</span>
 								</a>
 							</li>
 							<li class="sidebar-item">
-								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/messages/read/" aria-expanded="false">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/messages/" aria-expanded="false">
 									<i class="mdi mdi-comment-processing"></i>
 									<span class="hide-menu">Message</span>
 								</a>
-							
+							</li>
+							<li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/task/" aria-expanded="false">
+									<i class="mdi mdi-playlist-check"></i>
+									<span class="hide-menu">Task</span>
+								</a>
+							</li>
+							{# <li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/infrastructure/" aria-expanded="false">
+									<i class="mdi mdi-slack"></i>
+									<span class="hide-menu">Asset</span>
+								</a>
+							</li> #}
+
+			<li class="sidebar-item">
+                <a
+                  class="sidebar-link has-arrow waves-effect waves-dark"
+                  href="javascript:void(0)"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-city"></i
+                  ><span class="hide-menu">Building</span></a
+                >
+                <ul aria-expanded="false" class="collapse first-level">
+                <li class="sidebar-item">
+                    <a href="/building/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Building</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/office/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-outline"></i
+                      > #}
+                      <span class="hide-menu"> Office</span></a
+                    >
+                  </li>
+                  <li class="sidebar-item">
+                    <a href="/classroom/" class="sidebar-link"
+                      >
+                      {# <i class="mdi mdi-note-plus"></i
+                      > #}
+                      <span class="hide-menu"> Classroom</span></a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+							<li class="sidebar-item">
+								<a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+									<i class="mdi mdi-account"></i>
+									<span class="hide-menu">User</span>
+								</a>
+								<ul aria-expanded="false" class="collapse first-level">
+									<li class="#">
+										<a
+											href="/admin/" class="sidebar-link">
+											{# <i class="mdi mdi-account-location"></i
+																																	                      > #}
+											<span class="hide-menu">
+												Admin</span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a
+											href="/technician/" class="sidebar-link">
+											{# <i class="mdi mdi-account-location"></i
+																																	                      > #}
+											<span class="hide-menu">
+												Technician</span>
+										</a>
+									</li>
+									<li class="sidebar-item">
+										<a
+											href="/users" class="sidebar-link">
+											{# <
+																																	                      i class="mdi mdi-account-location"></
+																																	                      > #}
+											<span class="hide-menu">
+												Student</span>
+										</a>
+									</li>
+								</ul>
+							</li>
+							 <li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ path('app_padmn_viewrogress_index') }}" aria-expanded="false">
+									<i class="mdi mdi-rotate-3d"></i>
+									<span class="hide-menu">Progress</span>
+								</a>
+							</li>
+
+							<li class="sidebar-item">
 								
-										             
+							</li>
 						</ul>
 					</nav>
-					<!-- End Sidebar navigation -->
-				</div>
-				<!-- End Sidebar scroll-->
-			</aside>
+
+          <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+      </aside>
 			<!-- ============================================================== -->
 			<!-- End Left Sidebar - style you can find in sidebar.scss  -->
 			<!-- ============================================================== -->
@@ -416,49 +550,38 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 				<!-- ============================================================== -->
 				{# flowable template read component start #}
 					<div class="TcRv2CxEufCAnWVUJnDf"> <div class="YRrCJSr_j5nopfm4duUc Q_jg_EPdNf9eDMn1mLI2 hD0sTTDgbxakubcHVW2X">
-						 {% for message in messages %}
-                    <ul class="chat-list">
-                      
-
-                      <li class="chat-item">
-                        <div class="chat-img">
-                          <img src="../asset/images/users/1.jpg" alt="user" /> 
-                        </div>
-                        <div class="chat-content">
-                          <h6 class="font-medium">{{ app.user }}</h6>
-                          <div class="box bg-light-info">
-                           {{ message.description }}
-                            {# &amp; type setting industry. #}
-                          </div>
-                           {# <div class="box bg-light-info" style="color: blue">
-                           Item: {{ message.infrastructure}}
-                            {# &amp; type setting industry. #}
-                          {# </div> #} 
-                        </div>
-                         <div class="card" style="width:500px">
-					            	<img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{message.imagePath}}" alt="image description">
-
-                            </div>
-                        <div class="chat-time">{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</div>  
-
-                        {# <div class="card" style="width:500px">
-                        <img class="card-img" src={{ message.imagePath }} alt="Card image">
-                        <div class="card-img-overlay">
-                        <h4 class="card-title color-blue">James Anderson</h4>
-                        <p class="card-text"> {{ message.description }}</p>
-                        {# <a href="#" class="btn btn-primary">See Profile</a> #}
-                        {# <div class="chat-time">{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</div> #}
-
-                        {# </div> #} 
-
-                        </div>
-
-                      </li>
-                     
-                     
-                    </ul>
-                     {%  endfor  %}					
+						<div class="VQS2tmQ_zFyBOC2tkmto">
+							<img class="yNvZ2JlUalNo5uPPv1sf mWvJQyBFgwNGEt0h7bSP RpVwy4sO7Asb86CncKJ_" src="https://img.icons8.com/?size=1x&id=23264&format=png" alt="Neil image">
+						</div>
+						<div class="t7hrtvgtuIwf8EPNuj2r">
+							<div class="d3C8uAdJKNl1jzfE9ynq yM_AorRf2jSON3pDsdrz __9sbu0yrzdhGIkLWNXl vfNYjqjYMlN1XskEucCt OyABRrnTV_kvHV7dJ0uE">
+								{# {{progress.technician}} #}
+							</div>
+							<div class="c8dCx6gnV43hTOLV6ks5 PeR2JZ9BZHYIH8Ea3F36 text-normal XIIs8ZOri3wm8Wnj9N_y">
+								{# email@flowbite.com #}
+								{{progress.technician}}
+							</div>
+						</div>
 					</div>
+					{# <h1 class="hD0sTTDgbxakubcHVW2X q1oXbofRCOhVhOSB8tiU IOPhczRgtphv6NdNBDjj __9sbu0yrzdhGIkLWNXl OyABRrnTV_kvHV7dJ0uE">{{ message.title }}</h1> #}
+					<div class="TVHgSaRh3muGJct_epr9">
+						<p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y"></p>
+						<p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y">{{ progress.description }}</p>
+
+
+						<img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{ progress.imagePath }}" alt="image description">
+						<p class="d3C8uAdJKNl1jzfE9ynq _43MO1gcdi2Y0RJW1uHL PeR2JZ9BZHYIH8Ea3F36 XIIs8ZOri3wm8Wnj9N_y">
+							Created:{{ progress.createdAt ? progress.createdAt|date('Y-m-d H:i:s') : '' }}, Updated : {{ progress.updatedAt ? progress.updatedAt|date('Y-m-d H:i:s') : '' }}<br>
+						
+
+						</p>
+
+                     
+					
+					
+					</div>
+
+
 
 				</div>
 
@@ -466,17 +589,42 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 					<div class="Q_jg_EPdNf9eDMn1mLI2 rvdRhGyExrNYTA6euxsF om3BNuWld9UpFB3WzeiL lPgrNAFSq7M44sp_5uKw TcPymUI0qRI_HK56budh XpuPpk9eXhVCrleKmXDr">
 						<div class="_hpGev6RXFut0Jm_iRgf tI6ZVpHcCWxY_MKHSQWC rvdRhGyExrNYTA6euxsF xr7CqaTHxTvDOrwAH2SW tkZo48dB4RhnHSlDXzoe">
 							<div>
-							{# <a href="#" onclick="openPopup()">Open popup</a> #}
-								<a href="/messages/new/"  class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+								<a href="{{ path('app_progress_index') }}" class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
 									<svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 										<path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
 									</svg>
-									Message
+									Back
+								</a>
+							</div>
+                            <div>
+								<a href="{{ path('app_progress_edit', {'id': progress.id}) }}" class="y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+									<svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+									</svg>
+									Edit
 								</a>
 							</div>
 							<div>
 
-						
+							 {# <a href="{{ path('app_messages_edit', {'id': message.id}) }}"> #}
+
+                                 {# <button type="button" data-modal-toggle="user-modal" class="_k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 _Cj_M6jt2eLjDgkBBNgI b9aD6g2qw84oyZNsMO8j c8dCx6gnV43hTOLV6ks5 ezMFUVl744lvw6ht0lFe ijrOHNoSVGATsWYKl4Id y6GKdvUrd7vp_pxsFb57 g40_g3BQzYCOX5eZADgY mveJTCIb2WII7J4sY22F YoPCmQ0E_V5W0GGmSIdm _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T d8_fVOcgDmbt7UdpfeLK WuKugQzwTT7o1wwBck2R _ZsTMX_gz275093orLWM">
+                                    <svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path></svg> #}
+                              
+								{{ include('progress/_delete_form.html.twig') }}
+                                                      {# <a href="{{ path('app_progress_edit', {'id': progress.id}) }}">edit</a> #}
+
+								  
+
+                                {# </button>  
+								{# <a href="#" class="__9sbu0yrzdhGIkLWNXl _Ybd3WwuTVljUT4vEaM3 pXhVRBC8yaUNllmIWxln vpDN1VEJLu5FmLkr5WCk _7KA5gD55t2lxf9Jkj20 _dylIDxYTN3qgvD4U597 KmgKPWh7pHX4ztLneO0T ezMFUVl744lvw6ht0lFe mveJTCIb2WII7J4sY22F c8dCx6gnV43hTOLV6ks5 ZjWEEmDsdPvU2GdH53LK cexDVMRjens2nRrMcG96 ijrOHNoSVGATsWYKl4Id _k0lTW0vvzboctTxDi2R Q_jg_EPdNf9eDMn1mLI2 Nm7xMnguzOx6J5Ao7yCU t6gkcSf0Bt4MLItXvDJ_ icxWjIgUd9_dzYucx1nx R9nujHypnXyuHrBww9QK _1jTZ8KXRZul60S6czNi XIIs8ZOri3wm8Wnj9N_y Mmx5lX7HVdrWCgh3EpTP dMTOiA3mf3FTjlHu6DqW OPrb_iG5WDy_7F05BDOX yChACvAr1v8czJ2VO22j">
+									<svg class="ADSeKHR1DvUUA48Chci_ rxe6apEJoEk8r75xaVNG fhCwost7CSNRc2WSHLFW ZEPNZzATe5nPnS0shmrF" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+										<path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+									</svg>
+							      {{ include('messages/_delete_form.html.twig') }}
+
+
+								</a> #}
 							</div>
 						</div>
 						<div class="YRrCJSr_j5nopfm4duUc XYChh_GyxXGwI9NMA1Ww R0X5VtiZIoV7IjvrxBJ_ dGKzfMAd6n2iS7Kmq6Ow">
@@ -552,34 +700,26 @@ document.documentElement.classList.remove('v2fLMH8w3xgUEQcl63H9')
 		</div>
 
 <!-- Initialize the map -->
+{# <script>
+  (function() {
+    var map = L.map('map').setView([{{ message.latitude }}, {{ message.longitude }}], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Add markers for each location
+    
+      L.marker([{{ message.latitude }}, {{ message.longitude }}]).addTo(map)
+        .bindPopup("<b>{{ message.title }}</b><br>{{ message.latitude }}, {{ message.longitude }}");
+    
+  })();
+</script> #}
 
 
 
 
 
-     <script>
-			 function openPopup() {
-    // Open the popup window
-    var popup = window.open('', '', 'width=400,height=300');
-
-    // Write the HTML content of the popup window
-    var content = '<h2>Select an option:</h2>' +
-                  '<button onclick="optionSelected(\'option1\')">'+
-				  '<a href="/messages/new">building</a>'+
-				  '</button>' +
-                  '<button onclick="optionSelected(\'option2\')">Option 2</button>';
-
-    popup.document.write(content);
-
-    // Define a callback function that will be called when an option is selected
-    popup.optionSelected = function(option) {
-        // Do something with the selected option
-        console.log('Selected option:', option);
-        popup.close();
-    };
-} 
-			  
-	</script>
 
 		<!-- ============================================================== -->
 		<!-- End Wrapper -->

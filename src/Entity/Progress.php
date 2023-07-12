@@ -32,6 +32,12 @@ class Progress
     #[Gedmo\Timestampable(on:'update')]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    // #[ORM\ManyToOne]
+    // private ?Technician $techn = null;
+
+    #[ORM\ManyToOne]
+    private ?Technician $technician = null;
+
      
 
     public function getId(): ?int
@@ -98,6 +104,18 @@ class Progress
     public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getTechnician(): ?Technician
+    {
+        return $this->technician;
+    }
+
+    public function setTechnician(?Technician $technician): self
+    {
+        $this->technician = $technician;
 
         return $this;
     }

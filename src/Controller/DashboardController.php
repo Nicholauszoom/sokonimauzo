@@ -6,9 +6,12 @@ use App\Entity\Task;
 use App\Form\TaskType;
 use App\Repository\TaskRepository;
 use App\Repository\MessagesRepository;
+use App\Repository\TechnicianRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
+
 
 class DashboardController extends AbstractController
 {
@@ -17,9 +20,18 @@ class DashboardController extends AbstractController
  
    
      #[Route('/UserDashboard', methods:['GET'], name: 'u_dashb')]
-    public function getUserDash(){
+    public function getUserDash(MessagesRepository $messagesRepository,Security $security){
         $this->denyAccessUnlessGranted('ROLE_USER');
-        return $this->render('dashboard/user_dashboard.html.twig');
+
+        $user=$security->getUser();
+
+        $messagess = $messagesRepository->findAllByUserId($user->getId());
+    
+        // return $this->render('dashboard/user_dashboard.html.twig');
+
+        return $this->render('dashboard/user_dashboard.html.twig', [
+            'messagess' => $messagess
+        ]);
     }
 
 
@@ -79,9 +91,25 @@ class DashboardController extends AbstractController
     }
 
     #[Route('/TechnDashboard', methods:['GET'], name: 't_dashb')]
-    public function getTechnDash(){
+    public function getTechnDash(TaskRepository $taskRepository,Security $security){
         $this->denyAccessUnlessGranted('ROLE_TECHNICIAN');
-        return $this->render('dashboard/technician_dash.html.twig');
+
+        $techn=$security->getUser();
+
+        $tasks = $taskRepository->findByTechnicianId($techn->getId());
+        
+         $succes_by_techiId= $taskRepository-> successTaskByTechnId($techn->getId());
+
+         $fail_by_technId = $taskRepository->failTaskByTechnId($techn->getId());
+
+        // return $this->render('dashboard/technician_dash.html.twig');
+
+
+        return $this->render('dashboard/technician_dash.html.twig', [
+            'tasks' => $tasks,
+            'succes_by_techiId'=>$succes_by_techiId,
+            'fail_by_technId'=>$fail_by_technId,
+        ]);
     }
 
 }

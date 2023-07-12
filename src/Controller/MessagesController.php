@@ -161,6 +161,7 @@ private $longitude;
         ]);
     }
 
+    
 
     #[Route('/{id}', name: 'text_show_techn', methods: ['GET'])]
     public function technshowbyid(Messages $message): Response

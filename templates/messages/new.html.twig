@@ -397,7 +397,7 @@
 					            	<img class="h-auto max-w-lg transition-all duration-300 rounded-lg blur-sm hover:blur-none" src="{{message.imagePath}}" alt="image description">
 
                             </div>
-                        <div class="chat-time">{{ message.time ? message.time|date('Y-m-d H:i:s') : '' }}</div>  
+                        <div class="chat-time">{{ message.createdAt ? message.createdAt|date('Y-m-d H:i:s') : '' }}</div>  
 
                         {# <div class="card" style="width:500px">
                         <img class="card-img" src={{ message.imagePath }} alt="Card image">

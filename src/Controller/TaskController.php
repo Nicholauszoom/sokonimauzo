@@ -8,6 +8,9 @@ use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 // use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
+use Knp\Snappy\Pdf;
+// use Symfony\Component\Serializer\Serializer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -19,6 +22,9 @@ use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+
+use KnpSnappyPdf;
 
 #[Route('/task')]
 class TaskController extends AbstractController
@@ -213,6 +219,32 @@ public function editTaskStatusAction(Request $request, $id)
         'form' => $form->createView(),
     ]);
 }
+
+// #[Route('/report', name: 'task_report', methods: ['GET'])]
+// public function report(TaskRepository $taskRepository): Response
+// {
+
+
+//     // $task =$taskRepository->findAll();
+//     // $data = [];
+//     // foreach ($task as $task) {
+//     //     $data[] = [
+//     //         'id' => $task->getId(),
+//     //         'name' => $task->getName(),
+//     //         'time_created' => $task->getStartAt()->format('Y-m-d H:i:s'),
+//     //     ];
+//     // }
+
+//     return $this->render('task/task_report.html.twig', [
+//         'tasks' => $taskRepository->findAll(),
+       
+//     ]); 
+// }
+
+
+
+
+
 //end
 
 // protected function execute(InputInterface $input, OutputInterface $output)
@@ -267,7 +299,7 @@ public function editTaskStatusAction(Request $request, $id)
 
 
 
-#[Route('/report', name: 'app_task_report', methods: ['GET'])]
+#[Route('/task_report', name: 'app_task_report', methods: ['GET'])]
 public function getReport(Dompdf $dompdf ,TaskRepository $taskRepository): Response
 {
 
@@ -298,6 +330,25 @@ public function getReport(Dompdf $dompdf ,TaskRepository $taskRepository): Respo
     ]);
 }
 
+    #[Route('/reports', name: 'task_report_test3', methods: ['GET'])]
+public function generatePdfReport(Pdf $pdf)
+    {
+    $html = $this->renderView('task/task_report.html.twig', [
+        // Pass data to the report template
+    ]);
+
+    $pdfContent = $pdf->getOutputFromHtml($html);
+    // getOutputFromHtml($html);
+
+    return new Response(
+        $pdfContent,
+        200,
+        [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'attachment; filename="report.pdf"'
+        ]
+    );
+}
 
      
 }

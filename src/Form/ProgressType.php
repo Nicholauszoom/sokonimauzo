@@ -4,6 +4,9 @@ namespace App\Form;
 
 use App\Entity\Progress;
 use App\Entity\Task;
+use App\Entity\Technician;
+use App\Entity\User;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -13,8 +16,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProgressType extends AbstractType
 {
+    public function __construct(
+        private Security $security
+    ){
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+        $technician = $this->security->getUser();
+
         $builder
             // ->add('description')
             // ->add('imagePath')
@@ -66,8 +75,31 @@ class ProgressType extends AbstractType
 
             ]
         )
+
+        ->add('technician', EntityType::class, [
+            'class' => Technician::class,
+            'choice_label' => 'name', // or any other property you want to use as the label
+            'data' => $technician, // assuming $user is an instance of User entity
+        ])
+
+
+        // ->add('techn', EntityType::class, [
+
+        //     // looks for choices from this entity
+        //     'class' => Technician::class,
+        //     // uses the User.username property as the visible option string
+        //     // 'choice_label' => 'name',
+        //     'choice_label' => function ($techn) {
+        //         return $techn->getName();
+        //     }
+        //     // used to render a select box, check boxes or radios
+        //     // 'multiple' => true,
+        //     // 'expanded' => true,
+    
+        // ])
         ;
     }
+
 
     
 

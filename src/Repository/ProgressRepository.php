@@ -63,4 +63,32 @@ class ProgressRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+
+
+ /** 
+  * @param int $userId The user ID to filter by.
+
+  * 
+  * @return Progress[] Returns an array of Messages objects
+    */
+// public function findAllByUserId($userId): array
+// {
+//     return $this->createQueryBuilder('m')
+//         ->andWhere('m.user = :userId')
+//         ->setParameter('userId', $userId)
+//         ->orderBy('m.time', 'DESC')
+//         ->getQuery()
+//         ->getResult();
+// }
+public function findAllByTechnicianId($technicianId)
+{
+    return $this->createQueryBuilder('p')
+        ->join('p.technician', 'technician')
+        ->andWhere('technician.id = :technicianId')
+        ->setParameter('technicianId', $technicianId)
+        ->getQuery()
+        ->getResult();
+}
 }

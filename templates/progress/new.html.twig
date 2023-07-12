@@ -352,12 +352,12 @@
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
           <!-- Sidebar navigation-->
-          <nav class="sidebar-nav">
+           <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/Dashboard"
+                  href="/TechnDashboard"
                   aria-expanded="false"
                   ><i class="mdi mdi-dialpad"></i
                   ><span class="hide-menu">Dashboard</span></a
@@ -366,137 +366,25 @@
               <li class="sidebar-item">
                 <a
                   class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/messages/"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-comment-processing"></i
-                  ><span class="hide-menu">Message</span></a
-                >
-              </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/task/"
+                  href="/task/techn_task"
                   aria-expanded="false"
                   ><i class="mdi mdi-playlist-check"></i
                   ><span class="hide-menu">Task</span></a
                 >
               </li>
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="/infrastructure/"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-slack"></i
-                  ><span class="hide-menu">Asset</span></a
-                >
-              </li>
-              {# <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="grid.html"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-blur-linear"></i
-                  ><span class="hide-menu">Full Width</span></a
-                >
-              </li> #}
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-city"></i
-                  ><span class="hide-menu">Building</span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                <li class="sidebar-item">
-                    <a href="/building/" class="sidebar-link"
-                      >
-                      {# <i class="mdi mdi-note-outline"></i
-                      > #}
-                      <span class="hide-menu"> Building</span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="/office/" class="sidebar-link"
-                      >
-                      {# <i class="mdi mdi-note-outline"></i
-                      > #}
-                      <span class="hide-menu"> Office</span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="/classroom/" class="sidebar-link"
-                      >
-                      {# <i class="mdi mdi-note-plus"></i
-                      > #}
-                      <span class="hide-menu"> Classroom</span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-              {# <li class="sidebar-item">
-                <a
-                  class="sidebar-link waves-effect waves-dark sidebar-link"
-                  href="pages-buttons.html"
-                  aria-expanded="false"
-                  ><i class="mdi mdi-relative-scale"></i
-                  ><span class="hide-menu">Buttons</span></a
-                >
-              </li> #}
-              <li class="sidebar-item">
-                <a
-                  class="sidebar-link has-arrow waves-effect waves-dark"
-                  href="javascript:void(0)"
-                  aria-expanded="false"
-                  >
-                  <i class="mdi mdi-account"></i
-                  >
-                  <span class="hide-menu">User</span></a
-                >
-                <ul aria-expanded="false" class="collapse first-level">
-                  <li class="#">
-                    <a href="" class="sidebar-link"
-                      >
-                      {# <i class="mdi mdi-account-location"></i
-                      > #}
-                      <span class="hide-menu"> Staff</span></a
-                    >
-                  </li>
-                  <li class="sidebar-item">
-                    <a href="/technician/" class="sidebar-link"
-                      >
-                      {# <i class="mdi mdi-account-location"></i
-                      > #}
-                      <span class="hide-menu"> Technician</span></a
-                    >
-                  </li>
-                   <li class="sidebar-item">
-                    <a href="/users" class="sidebar-link"
-                      >
-                      {# <
-                      i class="mdi mdi-account-location"></
-                      > #}
-                      <span class="hide-menu"> Student</span></a
-                    >
-                  </li>
-                </ul>
-              </li>
-            
-              {# <li class="sidebar-item p-3">
-                <a
-                  href="https://github.com/wrappixel/matrix-admin-bt5"
-                  target="_blank"
-                  class="
-                    w-100
-                    btn btn-cyan
-                    d-flex
-                    align-items-center
-                    text-white
-                  "
-                  ><i class="mdi mdi-cloud-download font-20 me-2"></i>Download
-                  Free</a
-                >
-              </li> #}
+           
+             <li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="/messages/message" aria-expanded="false">
+									<i class="mdi mdi-comment-processing"></i>
+									<span class="hide-menu">Message</span>
+								</a>
+							</li>
+               <li class="sidebar-item">
+								<a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ path('app_progress_index') }}" aria-expanded="false">
+									<i class="mdi mdi-rotate-3d"></i>
+									<span class="hide-menu">Progress</span>
+								</a>
+							</li>
             </ul>
           </nav>
           <!-- End Sidebar navigation -->
@@ -516,7 +404,7 @@
         <div class="page-breadcrumb">
           <div class="row">
             <div class="col-12 d-flex no-block align-items-center">
-              <h4 class="page-title">Create New Task</h4>
+              <h4 class="page-title">Create New</h4>
               <div class="ms-auto text-end">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
@@ -546,7 +434,7 @@
               <h6 class="card-subtitle"></h6>
              
                 <div id="example-form">
-                  <h3> Create an Update of task</h3>
+                  <h3> Create a Progress of task</h3>
                   <section>
                      {{ include('progress/_form.html.twig') }}
 

@@ -110,6 +110,39 @@ class TaskRepository extends ServiceEntityRepository
 
 
 
+    // TOTAL NUMBER OF THE SUCCESS TASKS  FIND BY TECHN ID
+
+    public function successTaskByTechnId($technId)
+{
+    return $this->createQueryBuilder('t')
+        ->join('t.techn', 'techn')
+        ->andWhere('techn.id = :technId')
+        ->andWhere('t.status = :status')
+        ->setParameter('technId', $technId)
+        ->setParameter('status', 1)
+        ->getQuery()
+        ->getResult();
+}
+    
+
+
+
+
+  // TOTAL NUMBER OF THE FAILED TASKS  FIND BY TECHN ID
+
+  public function failTaskByTechnId($technId)
+  {
+      return $this->createQueryBuilder('t')
+          ->join('t.techn', 'techn')
+          ->andWhere('techn.id = :technId')
+          ->andWhere('t.status = :status')
+          ->setParameter('technId', $technId)
+          ->setParameter('status', 0)
+          ->getQuery()
+          ->getResult();
+  }
+
+
     // public function getTaskCountsByMonth(): array
     // {
         

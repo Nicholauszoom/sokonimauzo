@@ -144,13 +144,13 @@ class MessagesType extends AbstractType
                 // 'expanded' => true,
 
             ])
-            ->add('time', DateType::class, [
+            // ->add('time', DateType::class, [
 
-                'widget' => 'single_text',
-                // this is actually the default format for single_text
-                'format' => 'yyyy-MM-dd',
+            //     'widget' => 'single_text',
+            //     // this is actually the default format for single_text
+            //     'format' => 'yyyy-MM-dd',
     
-            ])
+            // ])
 
 
             // ->add('user', EntityType::class, [
