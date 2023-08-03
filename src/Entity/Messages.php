@@ -27,6 +27,8 @@ class Messages
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imagePath = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageData = null;
     //  #[ORM\Column(length: 255, nullable: true)]
     // private ?string $cameraImage = null;
 
@@ -57,7 +59,8 @@ class Messages
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $longitude =null;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(inversedBy: 'messages')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Officess $office = null;
 
     #[ORM\Column]
@@ -103,6 +106,17 @@ class Messages
     public function setImagePath(?string $imagePath): self
     {
         $this->imagePath = $imagePath;
+
+        return $this;
+    }
+    public function getImageData(): ?string
+    {
+        return $this->imageData;
+    }
+
+    public function setImageData(?string $imageData): self
+    {
+        $this->imageData = $imageData;
 
         return $this;
     }

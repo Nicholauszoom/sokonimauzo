@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use App\Entity\Building;
+use App\Entity\Officess;
 use App\Entity\Classroom;
 use App\Entity\Infrastructure;
 use App\Entity\Messages;
@@ -92,6 +93,9 @@ class MessagesType extends AbstractType
 
                 ]
             )
+           
+            ->add('imageData', HiddenType::class)// Hidden field to store base64-encoded image data
+
 
             // ->add('cameraImage', TextType::class, [
             //     'mapped' => false,
@@ -123,6 +127,21 @@ class MessagesType extends AbstractType
                 // 'choice_label' => 'name',
                 'choice_label' => function ($classroom) {
                     return $classroom->getName();
+                }
+                // used to render a select box, check boxes or radios
+                // 'multiple' => true,
+                // 'expanded' => true,
+
+            ])
+
+            ->add('office', EntityType::class, [
+
+                // looks for choices from this entity
+                'class' => Officess::class,
+                // uses the User.username property as the visible option string
+                // 'choice_label' => 'name',
+                'choice_label' => function ($office) {
+                    return $office->getName();
                 }
                 // used to render a select box, check boxes or radios
                 // 'multiple' => true,
@@ -195,6 +214,11 @@ class MessagesType extends AbstractType
          
             ->add('longitude', HiddenType::class)
             ->add('latitude', HiddenType::class)
+
+
+            // image capturing 
+            //   ->add('imageP', FileType::class, ['mapped' => false])
+            // ->add('imageData', HiddenType::class); // Hidden field to store base64-encoded image data
 
  
         ;

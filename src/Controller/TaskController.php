@@ -11,6 +11,7 @@ use Dompdf\Dompdf;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 // use Symfony\Component\Serializer\Serializer;
+use Mpdf\Mpdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -96,7 +97,17 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-           
+        // reposrt generation   
+        $mpdf = new Mpdf();
+        $content = "<h2>Report for Maintanance Task </h2>";
+        $content .= '<p>HelpDesk support system ,You have assigned a</br>
+                        You have assigned new task to conduct for more.
+        </p>';
+
+        $mpdf->WriteHTML($content);
+        $maintananceReport = $mpdf->Output('','S');
+
+        
          $email = (new Email())
             ->from('nicholaussomi5@gmail.com')
             ->to($task->getTechn())
@@ -104,7 +115,8 @@ class TaskController extends AbstractController
             ->subject('HelpDesk support system ,You have assigned a new task')
             ->text('You have assigned new task to conduct for more info visit our official website https:\\localhost:8000
                 THANK YOU!
-            ');
+            ')
+            ->attach($maintananceReport, 'contract-note.pdf');
 
         $mailer ->send($email);    
 
